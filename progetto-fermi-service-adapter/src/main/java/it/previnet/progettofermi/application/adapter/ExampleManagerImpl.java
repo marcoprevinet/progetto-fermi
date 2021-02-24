@@ -2,6 +2,7 @@ package it.previnet.progettofermi.application.adapter;
 
 import it.previnet.progettofermi.application.adapter.mapper.NominativoEntityNominativoInfoMapper;
 import it.previnet.progettofermi.application.port.ExampleManager;
+import it.previnet.progettofermi.application.port.FermiException;
 import it.previnet.progettofermi.bean.ExampleInfo;
 import it.previnet.progettofermi.bean.request.NominativoSearch;
 import it.previnet.progettofermi.repository.port.NominativoRepository;
@@ -11,6 +12,8 @@ import org.jboss.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,6 +35,12 @@ public class ExampleManagerImpl implements ExampleManager {
     @Override
     @Transactional
     public List<ExampleInfo> fetch(NominativoSearch exampleSearch) {
+        if(1==1) {
+            List<String> messages = new ArrayList<String>();
+            messages.add("messaggio 1");
+            messages.add("messaggio 2");
+            throw new FermiException(messages);
+        }
         return exampleRepository.fetch(exampleSearch).stream().map(exampleEntityExampleInfoMapper::mapEntityToBean).collect(Collectors.toList());
     }
 
