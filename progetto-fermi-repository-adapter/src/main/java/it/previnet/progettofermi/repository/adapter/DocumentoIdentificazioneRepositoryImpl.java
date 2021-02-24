@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @ApplicationScoped
-public class DocumentoIdentificazioneRepositoryImpl extends AbstractRepositoryImpl<RecapitoNominativoEntity> implements DocumentoIdentificazioneRepository {
+public class DocumentoIdentificazioneRepositoryImpl extends AbstractRepositoryImpl<DocumentoIdentificazioneEntity> implements DocumentoIdentificazioneRepository {
 
     private static final Logger logger = Logger.getLogger(DocumentoIdentificazioneRepositoryImpl.class);
 

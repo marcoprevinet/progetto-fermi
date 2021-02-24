@@ -5,6 +5,7 @@ import org.hibernate.Session;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.lang.reflect.ParameterizedType;
 
 public abstract class AbstractRepositoryImpl<T> implements AbstractRepository<T> {
@@ -33,16 +34,19 @@ public abstract class AbstractRepositoryImpl<T> implements AbstractRepository<T>
     }
 
     @Override
+    @Transactional
     public void persist(T entityToPersist) {
         getEntityManager().persist(entityToPersist);
     }
 
     @Override
+    @Transactional
     public void flush(){
         getEntityManager().flush();
     }
 
     @Override
+    @Transactional
     public void remove(T entityToDelete) {
         getEntityManager().remove(entityToDelete);
     }
