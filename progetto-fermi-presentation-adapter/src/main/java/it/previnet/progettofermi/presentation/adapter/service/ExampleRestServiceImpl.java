@@ -24,12 +24,6 @@ public class ExampleRestServiceImpl implements ExampleRestService {
 
     @Override
     public List<ExampleInfo> fetch(ExampleSearch exampleSearch) {
-        if(1==1) {
-            List<String> messages = new ArrayList<String>();
-            messages.add("messaggio 1");
-            messages.add("messaggio 2");
-            throw new FermiException(messages);
-        }
         return exampleManager.fetch(exampleSearch);
     }
 
