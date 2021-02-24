@@ -5,14 +5,14 @@ import it.previnet.progettofermi.bean.intf.WithToken;
 
 public class ExampleInfo implements WithToken {
 
-    private Long token;
+    private Integer token;
     private StatoInfo statoInfo;
 
-    public Long getToken() {
+    public Integer getToken() {
         return token;
     }
 
-    public void setToken(Long token) {
+    public void setToken(Integer token) {
         this.token = token;
     }
 

@@ -4,6 +4,7 @@ import it.previnet.progettofermi.model.enums.TipoSessoEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "nominativo")
@@ -53,10 +54,16 @@ public class NominativoEntity {
     private String denTelefono;
 
     @Column(name = "data_timestamp")
-    private String dataTimestamp;
+    private LocalDateTime dataTimestamp;
 
     @Column(name = "den_login", length = 80)
-    private LocalDateTime denLogin;
+    private String denLogin;
+
+    @OneToMany(mappedBy="nominativo", fetch = FetchType.LAZY)
+    private Set<RecapitoNominativoEntity> recapitoNominativo;
+
+    @OneToMany(mappedBy="nominativo", fetch = FetchType.LAZY)
+    private Set<DocumentoIdentificazioneEntity> documentoIdentificazione;
 
 
     public Integer getTokenNominativo() {
@@ -163,19 +170,35 @@ public class NominativoEntity {
         this.denTelefono = denTelefono;
     }
 
-    public String getDataTimestamp() {
+    public LocalDateTime getDataTimestamp() {
         return dataTimestamp;
     }
 
-    public void setDataTimestamp(String dataTimestamp) {
+    public void setDataTimestamp(LocalDateTime dataTimestamp) {
         this.dataTimestamp = dataTimestamp;
     }
 
-    public LocalDateTime getDenLogin() {
+    public String getDenLogin() {
         return denLogin;
     }
 
-    public void setDenLogin(LocalDateTime denLogin) {
+    public void setDenLogin(String denLogin) {
         this.denLogin = denLogin;
+    }
+
+    public Set<RecapitoNominativoEntity> getRecapitoNominativo() {
+        return recapitoNominativo;
+    }
+
+    public void setRecapitoNominativo(Set<RecapitoNominativoEntity> recapitoNominativo) {
+        this.recapitoNominativo = recapitoNominativo;
+    }
+
+    public Set<DocumentoIdentificazioneEntity> getDocumentoIdentificazione() {
+        return documentoIdentificazione;
+    }
+
+    public void setDocumentoIdentificazione(Set<DocumentoIdentificazioneEntity> documentoIdentificazione) {
+        this.documentoIdentificazione = documentoIdentificazione;
     }
 }

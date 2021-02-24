@@ -23,7 +23,7 @@ public abstract class AbstractRepositoryImpl<T> implements AbstractRepository<T>
     }
 
     @Override
-    public T findByToken(Long token) {
+    public T findByToken(Integer token) {
         return getEntityManager().find(entityType, token);
     }
 

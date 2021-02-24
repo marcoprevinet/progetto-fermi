@@ -3,7 +3,7 @@ package it.previnet.progettofermi.repository.port;
 import org.hibernate.Session;
 
 public interface AbstractRepository<T> {
-    T findByToken(Long token);
+    T findByToken(Integer token);
 
     void persist(T entityToPersist);
 
