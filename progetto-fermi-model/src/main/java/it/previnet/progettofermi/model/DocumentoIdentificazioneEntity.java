@@ -59,6 +59,10 @@ public class DocumentoIdentificazioneEntity {
     @Column(name = "content")
     private byte[] content;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="token_nominativo")
+    private NominativoEntity nominativo;
+
     public Integer getTokenDocumentoIdentificazion() {
         return tokenDocumentoIdentificazion;
     }
@@ -177,5 +181,13 @@ public class DocumentoIdentificazioneEntity {
 
     public void setContent(byte[] content) {
         this.content = content;
+    }
+
+    public NominativoEntity getNominativo() {
+        return nominativo;
+    }
+
+    public void setNominativo(NominativoEntity nominativo) {
+        this.nominativo = nominativo;
     }
 }

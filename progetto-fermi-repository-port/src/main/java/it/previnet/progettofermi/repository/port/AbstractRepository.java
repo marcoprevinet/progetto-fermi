@@ -11,7 +11,7 @@ public interface AbstractRepository<T> {
 
     void remove(T entityToDelete);
 
-    T findReference(Long token);
+    T findReference(Integer token);
 
     Session getSession();
 

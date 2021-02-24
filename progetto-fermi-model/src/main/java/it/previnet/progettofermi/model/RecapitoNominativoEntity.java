@@ -55,6 +55,10 @@ public class RecapitoNominativoEntity {
     @Column(name = "den_login", length = 80)
     private String denLogin;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="token_nominativo")
+    private NominativoEntity nominativo;
+
     public Integer getTokenRecapitoNominativo() {
         return tokenRecapitoNominativo;
     }
@@ -165,5 +169,13 @@ public class RecapitoNominativoEntity {
 
     public void setDenLogin(String denLogin) {
         this.denLogin = denLogin;
+    }
+
+    public NominativoEntity getNominativo() {
+        return nominativo;
+    }
+
+    public void setNominativo(NominativoEntity nominativo) {
+        this.nominativo = nominativo;
     }
 }
