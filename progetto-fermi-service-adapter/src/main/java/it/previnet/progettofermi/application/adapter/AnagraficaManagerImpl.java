@@ -5,10 +5,13 @@ import it.previnet.progettofermi.bean.DocumentoIdentificazione;
 import it.previnet.progettofermi.bean.Nominativo;
 import it.previnet.progettofermi.bean.RecapitoNominativo;
 import it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione;
+import it.previnet.progettofermi.bean.request.AnagraficaRequest;
 import org.jboss.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,17 +23,14 @@ import static it.previnet.progettofermi.bean.enums.TipoSesso.MASCHIO;
 
 @ApplicationScoped
 public class AnagraficaManagerImpl implements AnagraficaManager {
-
     private static final Logger logger = Logger.getLogger(AnagraficaManagerImpl.class);
 
-    @Override
-    @Transactional
-    public List<Nominativo> getAnagrafica() {
-        logger.info("MANAGER getAnagrafica");
+    private static Nominativo n;
 
-        // TODO: invocazione repository
-        List<Nominativo> list = new ArrayList<>();
-        Nominativo n = new Nominativo();
+    @PostConstruct
+    private void init() {
+        // FIXME rimuovere
+        n = new Nominativo();
         n.setDenCognome("ROSSI");
         n.setDenNome("MARIO");
         n.setDataNascita(LocalDateTime.now());
@@ -54,8 +54,27 @@ public class AnagraficaManagerImpl implements AnagraficaManager {
         di.setCodDocumentoIdentificazione("AB00000XY");
         n.setDocumentoIdentificazione(di);
 
+    }
+
+    @Override
+    @Transactional
+    public List<Nominativo> getAnagrafica() {
+        logger.info("MANAGER getAnagrafica");
+
+        // TODO: invocazione repository
+        List<Nominativo> list = new ArrayList<>();
         list.add(n);
 
         return list;
+    }
+
+    @Override
+    @Transactional
+    public Nominativo insertAnagrafica(AnagraficaRequest request, InputStream file) {
+        logger.info("MANAGER insertAnagrafica");
+
+        // TODO: invocazione repository
+
+        return n;
     }
 }
