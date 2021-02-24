@@ -1,16 +1,16 @@
 package it.previnet.progettofermi.application.adapter.mapper;
 
 import it.previnet.progettofermi.bean.enums.StatoInfo;
-import it.previnet.progettofermi.model.enums.StatoEntity;
+import it.previnet.progettofermi.model.enums.TipoSessoEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class StatoEntityStatoInfoMapper extends AbstractMapper<StatoEntity, StatoInfo> {
+public class StatoEntityStatoInfoMapper extends AbstractMapper<TipoSessoEntity, StatoInfo> {
 
 
     @Override
-    public StatoInfo mapEntityToBean(StatoEntity entity) {
+    public StatoInfo mapEntityToBean(TipoSessoEntity entity) {
         if (entity==null){
             return null;
         }
@@ -18,21 +18,21 @@ public class StatoEntityStatoInfoMapper extends AbstractMapper<StatoEntity, Stat
     }
 
     @Override
-    public StatoInfo mapEntityToBean(StatoEntity entity, StatoInfo bean) {
+    public StatoInfo mapEntityToBean(TipoSessoEntity entity, StatoInfo bean) {
         return null;
     }
 
     @Override
-    public StatoEntity mapBeanToEntity(StatoInfo bean) {
+    public TipoSessoEntity mapBeanToEntity(StatoInfo bean) {
         if (bean==null){
             return null;
         }
-        return StatoEntity.valueOf(bean.toString());
+        return TipoSessoEntity.valueOf(bean.toString());
     }
 
 
     @Override
-    public StatoEntity mapBeanToEntity(StatoInfo bean, StatoEntity entity) {
+    public TipoSessoEntity mapBeanToEntity(StatoInfo bean, TipoSessoEntity entity) {
         return null;
     }
 
