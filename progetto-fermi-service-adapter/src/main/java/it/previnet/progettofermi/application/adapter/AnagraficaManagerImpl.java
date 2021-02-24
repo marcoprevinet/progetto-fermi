@@ -4,7 +4,6 @@ import it.previnet.progettofermi.application.port.AnagraficaManager;
 import it.previnet.progettofermi.bean.DocumentoIdentificazione;
 import it.previnet.progettofermi.bean.Nominativo;
 import it.previnet.progettofermi.bean.RecapitoNominativo;
-import it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione;
 import it.previnet.progettofermi.bean.request.AnagraficaRequest;
 import org.jboss.logging.Logger;
 
@@ -12,9 +11,8 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 import java.io.InputStream;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione.CARTA_IDENTITA;
@@ -33,7 +31,7 @@ public class AnagraficaManagerImpl implements AnagraficaManager {
         n = new Nominativo();
         n.setDenCognome("ROSSI");
         n.setDenNome("MARIO");
-        n.setDataNascita(LocalDateTime.now());
+        n.setDataNascita(LocalDate.now());
         n.setCodFiscale("RSSMRA");
         n.setTipoSesso(MASCHIO);
 
@@ -50,7 +48,7 @@ public class AnagraficaManagerImpl implements AnagraficaManager {
         DocumentoIdentificazione di = new DocumentoIdentificazione();
         di.setTipoDocumentoIdentificazione(CARTA_IDENTITA);
         di.setDenEnteRilascio("COMUNE DI PREGANZIOL");
-        di.setDataRilascio(LocalDateTime.now());
+        di.setDataRilascio(LocalDate.now());
         di.setCodDocumentoIdentificazione("AB00000XY");
         n.setDocumentoIdentificazione(di);
 
@@ -72,6 +70,9 @@ public class AnagraficaManagerImpl implements AnagraficaManager {
     @Transactional
     public Nominativo insertAnagrafica(AnagraficaRequest request, InputStream file) {
         logger.info("MANAGER insertAnagrafica");
+
+        Nominativo nominativo = new Nominativo();
+
 
         // TODO: invocazione repository
 
