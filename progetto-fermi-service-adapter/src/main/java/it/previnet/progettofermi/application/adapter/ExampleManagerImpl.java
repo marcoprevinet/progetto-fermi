@@ -3,7 +3,7 @@ package it.previnet.progettofermi.application.adapter;
 import it.previnet.progettofermi.application.adapter.mapper.NominativoEntityNominativoInfoMapper;
 import it.previnet.progettofermi.application.port.ExampleManager;
 import it.previnet.progettofermi.bean.ExampleInfo;
-import it.previnet.progettofermi.bean.request.ExampleSearch;
+import it.previnet.progettofermi.bean.request.NominativoSearch;
 import it.previnet.progettofermi.repository.port.NominativoRepository;
 import it.previnet.progettofermi.application.adapter.util.BeanUtil;
 import org.jboss.logging.Logger;
@@ -31,7 +31,7 @@ public class ExampleManagerImpl implements ExampleManager {
 
     @Override
     @Transactional
-    public List<ExampleInfo> fetch(ExampleSearch exampleSearch) {
+    public List<ExampleInfo> fetch(NominativoSearch exampleSearch) {
         return exampleRepository.fetch(exampleSearch).stream().map(exampleEntityExampleInfoMapper::mapEntityToBean).collect(Collectors.toList());
     }
 

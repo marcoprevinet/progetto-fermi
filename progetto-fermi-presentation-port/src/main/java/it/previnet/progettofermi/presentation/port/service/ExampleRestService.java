@@ -1,7 +1,7 @@
 package it.previnet.progettofermi.presentation.port.service;
 
 import it.previnet.progettofermi.bean.ExampleInfo;
-import it.previnet.progettofermi.bean.request.ExampleSearch;
+import it.previnet.progettofermi.bean.request.NominativoSearch;
 
 import javax.annotation.security.PermitAll;
 import javax.validation.constraints.NotNull;
@@ -16,12 +16,12 @@ public interface ExampleRestService {
     @Path("/search")
     @Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
     @PermitAll
-    List<ExampleInfo> fetch(@BeanParam ExampleSearch applicazioneSearch);
+    List<ExampleInfo> fetch(@BeanParam NominativoSearch applicazioneSearch);
 
     @GET
     @Path("/search/{token}")
     @Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
     @PermitAll
-    ExampleInfo fetch(@NotNull @PathParam("token") Long token);
+    ExampleInfo fetch(@NotNull @PathParam("token") Integer token);
 
 }
