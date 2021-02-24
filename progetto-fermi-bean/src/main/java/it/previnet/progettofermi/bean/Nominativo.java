@@ -20,6 +20,8 @@ public class Nominativo {
     private String denTelefono;
     private LocalDateTime dataTimestamp;
     private String denLogin;
+    private RecapitoNominativo recapitoNominativo;
+    private DocumentoIdentificazione documentoIdentificazione;
 
     public int getTokenNominativo() {
         return tokenNominativo;
@@ -139,5 +141,44 @@ public class Nominativo {
 
     public void setDenLogin(String denLogin) {
         this.denLogin = denLogin;
+    }
+
+    public RecapitoNominativo getRecapitoNominativo() {
+        return recapitoNominativo;
+    }
+
+    public void setRecapitoNominativo(RecapitoNominativo recapitoNominativo) {
+        this.recapitoNominativo = recapitoNominativo;
+    }
+
+    public DocumentoIdentificazione getDocumentoIdentificazione() {
+        return documentoIdentificazione;
+    }
+
+    public void setDocumentoIdentificazione(DocumentoIdentificazione documentoIdentificazione) {
+        this.documentoIdentificazione = documentoIdentificazione;
+    }
+
+    @Override
+    public String toString() {
+        return "Nominativo{" +
+                "tokenNominativo=" + tokenNominativo +
+                ", codFiscale='" + codFiscale + '\'' +
+                ", codPartitaIva='" + codPartitaIva + '\'' +
+                ", denCognome='" + denCognome + '\'' +
+                ", denNome='" + denNome + '\'' +
+                ", denRagioneSociale='" + denRagioneSociale + '\'' +
+                ", tipoSesso=" + tipoSesso +
+                ", dataNascita=" + dataNascita +
+                ", codProvinciaNascita='" + codProvinciaNascita + '\'' +
+                ", denComuneNascita='" + denComuneNascita + '\'' +
+                ", codNazioneCittadinanza='" + codNazioneCittadinanza + '\'' +
+                ", denEmail='" + denEmail + '\'' +
+                ", denTelefono='" + denTelefono + '\'' +
+                ", dataTimestamp=" + dataTimestamp +
+                ", denLogin='" + denLogin + '\'' +
+                ", recapitoNominativo=" + recapitoNominativo +
+                ", documentoIdentificazione=" + documentoIdentificazione +
+                '}';
     }
 }

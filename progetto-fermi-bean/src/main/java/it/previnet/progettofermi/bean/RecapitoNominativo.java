@@ -131,4 +131,24 @@ public class RecapitoNominativo {
     public void setDenLogin(String denLogin) {
         this.denLogin = denLogin;
     }
+
+    @Override
+    public String toString() {
+        return "RecapitoNominativo{" +
+                "tokenRecapitoNominativo=" + tokenRecapitoNominativo +
+                ", tipoRecapitoNominativo=" + tipoRecapitoNominativo +
+                ", tokenNominativo=" + tokenNominativo +
+                ", denPresso='" + denPresso + '\'' +
+                ", denNumeroCivico='" + denNumeroCivico + '\'' +
+                ", codCap='" + codCap + '\'' +
+                ", denLocalita='" + denLocalita + '\'' +
+                ", codProvincia='" + codProvincia + '\'' +
+                ", codNazione='" + codNazione + '\'' +
+                ", denIndirizzo='" + denIndirizzo + '\'' +
+                ", dataInizio=" + dataInizio +
+                ", dataFine=" + dataFine +
+                ", dataTimestamp=" + dataTimestamp +
+                ", denLogin='" + denLogin + '\'' +
+                '}';
+    }
 }

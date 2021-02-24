@@ -3,6 +3,7 @@ package it.previnet.progettofermi.bean;
 import it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 public class DocumentoIdentificazione {
     private int tokenDocumentoIdentificazion;
@@ -139,5 +140,26 @@ public class DocumentoIdentificazione {
 
     public void setContent(byte[] content) {
         this.content = content;
+    }
+
+    @Override
+    public String toString() {
+        return "DocumentoIdentificazione{" +
+                "tokenDocumentoIdentificazion=" + tokenDocumentoIdentificazion +
+                ", tokenNominativo=" + tokenNominativo +
+                ", tipoDocumentoIdentificazione=" + tipoDocumentoIdentificazione +
+                ", codDocumentoIdentificazione='" + codDocumentoIdentificazione + '\'' +
+                ", dataRilascio=" + dataRilascio +
+                ", dataScadenza=" + dataScadenza +
+                ", denEnteRilascio='" + denEnteRilascio + '\'' +
+                ", denLocalitaRilascio='" + denLocalitaRilascio + '\'' +
+                ", codSiglaProvinciaRilascio='" + codSiglaProvinciaRilascio + '\'' +
+                ", codNazione='" + codNazione + '\'' +
+                ", dataInizio=" + dataInizio +
+                ", dataFine=" + dataFine +
+                ", dataTimestamp=" + dataTimestamp +
+                ", denLogin='" + denLogin + '\'' +
+                ", content=[array of " + (content != null ? content.length : 0) + " bytes]" +
+                '}';
     }
 }
