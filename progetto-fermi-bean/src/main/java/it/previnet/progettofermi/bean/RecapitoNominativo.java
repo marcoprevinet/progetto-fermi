@@ -2,6 +2,7 @@ package it.previnet.progettofermi.bean;
 
 import it.previnet.progettofermi.bean.enums.TipoRecapitoNominativo;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class RecapitoNominativo {
@@ -15,8 +16,8 @@ public class RecapitoNominativo {
     private String codProvincia;
     private String codNazione;
     private String denIndirizzo;
-    private LocalDateTime dataInizio;
-    private LocalDateTime dataFine;
+    private LocalDate dataInizio;
+    private LocalDate dataFine;
     private LocalDateTime dataTimestamp;
     private String denLogin;
 
@@ -100,19 +101,19 @@ public class RecapitoNominativo {
         this.denIndirizzo = denIndirizzo;
     }
 
-    public LocalDateTime getDataInizio() {
+    public LocalDate getDataInizio() {
         return dataInizio;
     }
 
-    public void setDataInizio(LocalDateTime dataInizio) {
+    public void setDataInizio(LocalDate dataInizio) {
         this.dataInizio = dataInizio;
     }
 
-    public LocalDateTime getDataFine() {
+    public LocalDate getDataFine() {
         return dataFine;
     }
 
-    public void setDataFine(LocalDateTime dataFine) {
+    public void setDataFine(LocalDate dataFine) {
         this.dataFine = dataFine;
     }
 

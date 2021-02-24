@@ -2,6 +2,7 @@ package it.previnet.progettofermi.bean;
 
 import it.previnet.progettofermi.bean.enums.TipoSesso;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Nominativo {
@@ -12,7 +13,7 @@ public class Nominativo {
     private String denNome;
     private String denRagioneSociale;
     private TipoSesso tipoSesso;
-    private LocalDateTime dataNascita;
+    private LocalDate dataNascita;
     private String codProvinciaNascita;
     private String denComuneNascita;
     private String codNazioneCittadinanza;
@@ -79,11 +80,11 @@ public class Nominativo {
         this.tipoSesso = tipoSesso;
     }
 
-    public LocalDateTime getDataNascita() {
+    public LocalDate getDataNascita() {
         return dataNascita;
     }
 
-    public void setDataNascita(LocalDateTime dataNascita) {
+    public void setDataNascita(LocalDate dataNascita) {
         this.dataNascita = dataNascita;
     }
 
