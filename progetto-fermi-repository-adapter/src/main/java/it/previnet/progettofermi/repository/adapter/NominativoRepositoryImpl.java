@@ -2,7 +2,9 @@ package it.previnet.progettofermi.repository.adapter;
 
 import it.previnet.progettofermi.bean.request.ExampleSearch;
 import it.previnet.progettofermi.model.NominativoEntity;
-import it.previnet.progettofermi.repository.port.ExampleRepository;
+import it.previnet.progettofermi.repository.port.ModelUtils;
+import it.previnet.progettofermi.repository.port.NominativoRepository;
+import org.hibernate.Session;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -12,9 +14,11 @@ import java.util.List;
 import java.util.Map;
 
 @ApplicationScoped
-public class ExampleRepositoryImpl extends AbstractRepositoryImpl<NominativoEntity> implements ExampleRepository {
+public class NominativoRepositoryImpl extends AbstractRepositoryImpl<NominativoEntity> implements NominativoRepository {
 
-    private static final Logger logger = Logger.getLogger(ExampleRepositoryImpl.class);
+    private static final Logger logger = Logger.getLogger(NominativoRepositoryImpl.class);
+
+    private ModelUtils modelUtils;
 
     @Override
     public List<NominativoEntity> fetch(ExampleSearch applicazioneSearch) {
@@ -24,5 +28,4 @@ public class ExampleRepositoryImpl extends AbstractRepositoryImpl<NominativoEnti
         parameters.forEach((k, v) -> query.setParameter(k, v));
         return query.getResultList();
     }
-
 }

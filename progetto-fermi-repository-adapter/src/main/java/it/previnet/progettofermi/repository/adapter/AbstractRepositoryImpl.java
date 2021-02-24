@@ -1,6 +1,7 @@
 package it.previnet.progettofermi.repository.adapter;
 
 import it.previnet.progettofermi.repository.port.AbstractRepository;
+import org.hibernate.Session;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -49,5 +50,10 @@ public abstract class AbstractRepositoryImpl<T> implements AbstractRepository<T>
     protected EntityManager getEntityManager() {
         // if you have to choose between more entity manager yoc can check info from uriInfo
         return entityManager;
+    }
+
+    @Override
+    public Session getSession() {
+        return entityManager.unwrap(Session.class);
     }
 }

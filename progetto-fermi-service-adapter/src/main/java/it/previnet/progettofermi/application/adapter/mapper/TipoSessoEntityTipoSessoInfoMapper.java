@@ -6,7 +6,7 @@ import it.previnet.progettofermi.model.enums.TipoSessoEntity;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class StatoEntityStatoInfoMapper extends AbstractMapper<TipoSessoEntity, StatoInfo> {
+public class TipoSessoEntityTipoSessoInfoMapper extends AbstractMapper<TipoSessoEntity, StatoInfo> {
 
 
     @Override

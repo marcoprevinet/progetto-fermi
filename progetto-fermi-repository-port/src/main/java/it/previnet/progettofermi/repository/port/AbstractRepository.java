@@ -1,5 +1,7 @@
 package it.previnet.progettofermi.repository.port;
 
+import org.hibernate.Session;
+
 public interface AbstractRepository<T> {
     T findByToken(Long token);
 
@@ -10,4 +12,7 @@ public interface AbstractRepository<T> {
     void remove(T entityToDelete);
 
     T findReference(Long token);
+
+    Session getSession();
+
 }

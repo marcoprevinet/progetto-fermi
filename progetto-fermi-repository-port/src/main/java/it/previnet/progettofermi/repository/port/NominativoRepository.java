@@ -5,7 +5,7 @@ import it.previnet.progettofermi.model.NominativoEntity;
 
 import java.util.List;
 
-public interface ExampleRepository extends AbstractRepository<NominativoEntity> {
+public interface NominativoRepository extends AbstractRepository<NominativoEntity> {
     
     List<NominativoEntity> fetch(ExampleSearch applicazioneSearch);
 

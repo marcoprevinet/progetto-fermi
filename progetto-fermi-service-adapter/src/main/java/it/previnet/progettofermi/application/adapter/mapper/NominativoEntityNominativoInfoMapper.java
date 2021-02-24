@@ -8,10 +8,10 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 @ApplicationScoped
-public class ExampleEntityExampleInfoMapper extends AbstractMapper<NominativoEntity, ExampleInfo> {
+public class NominativoEntityNominativoInfoMapper extends AbstractMapper<NominativoEntity, ExampleInfo> {
 
     @Inject
-    StatoEntityStatoInfoMapper statoEntityStatoInfoMapper;
+    TipoSessoEntityTipoSessoInfoMapper statoEntityStatoInfoMapper;
 
     @Override
     public ExampleInfo mapEntityToBean(NominativoEntity entity) {
@@ -20,7 +20,7 @@ public class ExampleEntityExampleInfoMapper extends AbstractMapper<NominativoEnt
 
     @Override
     public ExampleInfo mapEntityToBean(NominativoEntity entity, ExampleInfo bean) {
-        bean.setToken(entity.getToken());
+        bean.setToken(entity.getTokenNominativo());
         bean.setStatoInfo(statoEntityStatoInfoMapper.mapEntityToBean(entity.getTipoSesso()));
         return bean;
     }
@@ -33,7 +33,7 @@ public class ExampleEntityExampleInfoMapper extends AbstractMapper<NominativoEnt
 
     @Override
     public NominativoEntity mapBeanToEntity(ExampleInfo bean, NominativoEntity entity) {
-        entity.setToken(bean.getToken());
+        entity.setTokenNominativo(bean.getToken());
         entity.setTipoSesso(statoEntityStatoInfoMapper.mapBeanToEntity(bean.getStatoInfo()));
         return entity;
     }

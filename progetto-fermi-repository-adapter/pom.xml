@@ -26,11 +26,11 @@
 			<artifactId>progetto-fermi-repository-port</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>it.previnet.progettofermi</groupId>
 			<artifactId>progetto-fermi-bean</artifactId>
 			<version>${project.parent.version}</version>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-agroal</artifactId>
