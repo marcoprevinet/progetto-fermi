@@ -1,18 +1,39 @@
 package it.previnet.progettofermi.presentation.adapter.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import it.previnet.progettofermi.application.port.AnagraficaManager;
+import it.previnet.progettofermi.application.port.FermiException;
 import it.previnet.progettofermi.bean.Nominativo;
+import it.previnet.progettofermi.bean.request.AnagraficaRequest;
 import it.previnet.progettofermi.presentation.port.service.AnagraficaRestService;
+import org.apache.commons.collections4.CollectionUtils;
 import org.jboss.logging.Logger;
+import org.jboss.resteasy.plugins.providers.multipart.InputPart;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @ApplicationScoped
 public class AnagraficaRestServiceImpl implements AnagraficaRestService {
     private static final Logger logger = Logger.getLogger(AnagraficaRestServiceImpl.class);
+
+    private static final Pattern FILENAME_PATTERN = Pattern.compile(".*filename=(.*)");
+
+    @Inject
+    private ObjectMapper objectMapper;
 
     @Inject
     private AnagraficaManager anagraficaManager;
@@ -22,5 +43,55 @@ public class AnagraficaRestServiceImpl implements AnagraficaRestService {
         logger.info("REST SERVICE getAnagrafica");
         List<Nominativo> anagrafica = anagraficaManager.getAnagrafica();
         return Response.ok(anagrafica).build();
+    }
+
+    @Override
+    public Response postAnagrafica(MultipartFormDataInput input) {
+        logger.info("REST SERVICE postAnagrafica");
+
+        Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
+        List<InputPart> dataParts = uploadForm.get("data");
+        if (CollectionUtils.isEmpty(dataParts)) {
+            throw new FermiException(Collections.singletonList("missing data part"));
+        }
+
+        AnagraficaRequest anagraficaRequest = null;
+        InputPart dataPart = dataParts.get(0);
+        try {
+            String body = dataPart.getBody(String.class, null);
+            anagraficaRequest = objectMapper.readValue(body, AnagraficaRequest.class);
+        } catch (Exception e) {
+            logger.error("catching exception", e);
+            throw new FermiException(Arrays.asList("invalid data part", e.getMessage()));
+        }
+
+        InputStream inputStream = null;
+        List<InputPart> fileParts = uploadForm.get("file");
+        if (CollectionUtils.isEmpty(fileParts)) {
+            logger.warn("missing file part");
+        } else {
+            InputPart filePart = fileParts.get(0);
+            String filename = "";
+            try {
+                inputStream = filePart.getBody(InputStream.class, null);
+                MultivaluedMap<String, String> headers = filePart.getHeaders();
+                if (!Objects.isNull(headers)) {
+                    String partHeader = headers.getFirst("Content-Disposition");
+                    Matcher matcher = FILENAME_PATTERN.matcher(partHeader);
+                    if (matcher.matches()) {
+                        filename = matcher.group(1);
+                        logger.info("reading uploaded file: " + filename);
+                    } else {
+                        logger.info("reading uploaded file");
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        Nominativo nominativo = anagraficaManager.insertAnagrafica(anagraficaRequest, inputStream);
+
+        return Response.ok(nominativo).build();
     }
 }
