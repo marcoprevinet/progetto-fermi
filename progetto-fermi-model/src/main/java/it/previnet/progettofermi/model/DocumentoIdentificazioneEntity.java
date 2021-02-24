@@ -14,10 +14,10 @@ public class DocumentoIdentificazioneEntity {
     @SequenceGenerator(name = "tokenDocumentoIdentificazioneGenerator", sequenceName = "documento_identificazione_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tokenDocumentoIdentificazioneGenerator")
     @Column(name = "token_documento_identificazion", nullable = false)
-    private int tokenDocumentoIdentificazion;
+    private Integer tokenDocumentoIdentificazion;
 
     @Column(name = "token_nominativo", nullable = false)
-    private int tokenNominativo;
+    private Integer tokenNominativo;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_documento_identificazione", length = 2)
@@ -59,19 +59,19 @@ public class DocumentoIdentificazioneEntity {
     @Column(name = "content")
     private byte[] content;
 
-    public int getTokenDocumentoIdentificazion() {
+    public Integer getTokenDocumentoIdentificazion() {
         return tokenDocumentoIdentificazion;
     }
 
-    public void setTokenDocumentoIdentificazion(int tokenDocumentoIdentificazion) {
+    public void setTokenDocumentoIdentificazion(Integer tokenDocumentoIdentificazion) {
         this.tokenDocumentoIdentificazion = tokenDocumentoIdentificazion;
     }
 
-    public int getTokenNominativo() {
+    public Integer getTokenNominativo() {
         return tokenNominativo;
     }
 
-    public void setTokenNominativo(int tokenNominativo) {
+    public void setTokenNominativo(Integer tokenNominativo) {
         this.tokenNominativo = tokenNominativo;
     }
 

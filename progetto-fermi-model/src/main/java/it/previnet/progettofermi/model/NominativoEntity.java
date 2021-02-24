@@ -13,7 +13,7 @@ public class NominativoEntity {
     @SequenceGenerator(name = "tokenNominativoGenerator", sequenceName = "nominativo_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tokenNominativoGenerator")
     @Column(name = "token_nominativo", nullable = false)
-    private int tokenNominativo;
+    private Integer tokenNominativo;
 
     @Column(name = "cod_fiscale", length = 16)
     private String codFiscale;
@@ -59,11 +59,11 @@ public class NominativoEntity {
     private LocalDateTime denLogin;
 
 
-    public int getTokenNominativo() {
+    public Integer getTokenNominativo() {
         return tokenNominativo;
     }
 
-    public void setTokenNominativo(int tokenNominativo) {
+    public void setTokenNominativo(Integer tokenNominativo) {
         this.tokenNominativo = tokenNominativo;
     }
 

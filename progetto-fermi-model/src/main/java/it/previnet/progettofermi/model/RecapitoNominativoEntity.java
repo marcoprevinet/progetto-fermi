@@ -13,14 +13,14 @@ public class RecapitoNominativoEntity {
     @SequenceGenerator(name = "tokenRecapitoNominativoGenerator", sequenceName = "recapito_nominativo_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tokenRecapitoNominativoGenerator")
     @Column(name = "token_recapito_nominativo", nullable = false)
-    private int tokenRecapitoNominativo;
+    private Integer tokenRecapitoNominativo;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_recapito_nominativo", length = 3)
     private TipoRecapitoNominativoEntity tipoRecapitoNominativo;
 
     @Column(name = "token_nominativo", nullable = false)
-    private int tokenNominativo;
+    private Integer tokenNominativo;
 
     @Column(name = "den_presso", length = 80)
     private String denPresso;
@@ -55,11 +55,11 @@ public class RecapitoNominativoEntity {
     @Column(name = "den_login", length = 80)
     private String denLogin;
 
-    public int getTokenRecapitoNominativo() {
+    public Integer getTokenRecapitoNominativo() {
         return tokenRecapitoNominativo;
     }
 
-    public void setTokenRecapitoNominativo(int tokenRecapitoNominativo) {
+    public void setTokenRecapitoNominativo(Integer tokenRecapitoNominativo) {
         this.tokenRecapitoNominativo = tokenRecapitoNominativo;
     }
 
@@ -71,11 +71,11 @@ public class RecapitoNominativoEntity {
         this.tipoRecapitoNominativo = tipoRecapitoNominativo;
     }
 
-    public int getTokenNominativo() {
+    public Integer getTokenNominativo() {
         return tokenNominativo;
     }
 
-    public void setTokenNominativo(int tokenNominativo) {
+    public void setTokenNominativo(Integer tokenNominativo) {
         this.tokenNominativo = tokenNominativo;
     }
 
