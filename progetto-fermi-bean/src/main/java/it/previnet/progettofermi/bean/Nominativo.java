@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Nominativo {
-    private int tokenNominativo;
+    private Integer tokenNominativo;
     private String codFiscale;
     private String codPartitaIva;
     private String denCognome;
@@ -24,11 +24,11 @@ public class Nominativo {
     private RecapitoNominativo recapitoNominativo;
     private DocumentoIdentificazione documentoIdentificazione;
 
-    public int getTokenNominativo() {
+    public Integer getTokenNominativo() {
         return tokenNominativo;
     }
 
-    public void setTokenNominativo(int tokenNominativo) {
+    public void setTokenNominativo(Integer tokenNominativo) {
         this.tokenNominativo = tokenNominativo;
     }
 

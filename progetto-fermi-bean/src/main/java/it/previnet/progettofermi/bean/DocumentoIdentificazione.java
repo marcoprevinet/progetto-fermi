@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 public class DocumentoIdentificazione {
-    private int tokenDocumentoIdentificazion;
-    private int tokenNominativo;
+    private Integer tokenDocumentoIdentificazion;
+    private Integer tokenNominativo;
     private TipoDocumentoIdentificazione tipoDocumentoIdentificazione;
     private String codDocumentoIdentificazione;
     private LocalDate dataRilascio;
@@ -23,19 +23,19 @@ public class DocumentoIdentificazione {
     private String denLogin;
     private byte[] content;
 
-    public int getTokenDocumentoIdentificazion() {
+    public Integer getTokenDocumentoIdentificazion() {
         return tokenDocumentoIdentificazion;
     }
 
-    public void setTokenDocumentoIdentificazion(int tokenDocumentoIdentificazion) {
+    public void setTokenDocumentoIdentificazion(Integer tokenDocumentoIdentificazion) {
         this.tokenDocumentoIdentificazion = tokenDocumentoIdentificazion;
     }
 
-    public int getTokenNominativo() {
+    public Integer getTokenNominativo() {
         return tokenNominativo;
     }
 
-    public void setTokenNominativo(int tokenNominativo) {
+    public void setTokenNominativo(Integer tokenNominativo) {
         this.tokenNominativo = tokenNominativo;
     }
 

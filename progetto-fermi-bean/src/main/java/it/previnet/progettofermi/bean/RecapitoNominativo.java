@@ -6,9 +6,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class RecapitoNominativo {
-    private int tokenRecapitoNominativo;
+    private Integer tokenRecapitoNominativo;
     private TipoRecapitoNominativo tipoRecapitoNominativo;
-    private int tokenNominativo;
+    private Integer tokenNominativo;
     private String denPresso;
     private String denNumeroCivico;
     private String codCap;
@@ -21,11 +21,11 @@ public class RecapitoNominativo {
     private LocalDateTime dataTimestamp;
     private String denLogin;
 
-    public int getTokenRecapitoNominativo() {
+    public Integer getTokenRecapitoNominativo() {
         return tokenRecapitoNominativo;
     }
 
-    public void setTokenRecapitoNominativo(int tokenRecapitoNominativo) {
+    public void setTokenRecapitoNominativo(Integer tokenRecapitoNominativo) {
         this.tokenRecapitoNominativo = tokenRecapitoNominativo;
     }
 
@@ -37,11 +37,11 @@ public class RecapitoNominativo {
         this.tipoRecapitoNominativo = tipoRecapitoNominativo;
     }
 
-    public int getTokenNominativo() {
+    public Integer getTokenNominativo() {
         return tokenNominativo;
     }
 
-    public void setTokenNominativo(int tokenNominativo) {
+    public void setTokenNominativo(Integer tokenNominativo) {
         this.tokenNominativo = tokenNominativo;
     }
 
