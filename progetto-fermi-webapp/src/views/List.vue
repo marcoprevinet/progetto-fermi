@@ -139,21 +139,22 @@ export default Vue.extend({
       currentPage: 1,
       perPage: 5,
       pageOptions: [5, 10, 15, 20],
-
       filter: null,
-      filterOn: [],
+      filterOn: []
     };
   },
   mounted() {
-    // Set the initial number of items
-    this.totalRows = this.items.length;
     axios.get(`${SERVICE_BASE_URL}/anagrafica`)
       .then((response) => {
         this.items = response.data;
         this.totalRows = response.data.length;
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
+        this.$bvToast.toast("Qualcosa è andato storto. Riprova", {
+          title: "Ooops",
+          variant: "danger"
+        });
       })
   },
   methods: {
