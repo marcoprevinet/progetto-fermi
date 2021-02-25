@@ -4,6 +4,7 @@ package it.previnet.progettofermi.model;
 import it.previnet.progettofermi.model.enums.TipoDocumentoIdentificazioneEntity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,10 +25,10 @@ public class DocumentoIdentificazioneEntity {
     private String codDocumentoIdentificazione;
 
     @Column(name = "data_rilascio")
-    private LocalDateTime dataRilascio;
+    private LocalDate dataRilascio;
 
     @Column(name = "data_scadenza")
-    private LocalDateTime dataScadenza;
+    private LocalDate dataScadenza;
 
     @Column(name = "den_ente_rilascio", length = 80)
     private String denEnteRilascio;
@@ -42,10 +43,10 @@ public class DocumentoIdentificazioneEntity {
     private String codNazione;
 
     @Column(name = "data_inizio")
-    private LocalDateTime dataInizio;
+    private LocalDate dataInizio;
 
     @Column(name = "data_fine")
-    private LocalDateTime dataFine;
+    private LocalDate dataFine;
 
     @Column(name = "data_timestamp")
     private LocalDateTime dataTimestamp;
@@ -84,19 +85,19 @@ public class DocumentoIdentificazioneEntity {
         this.codDocumentoIdentificazione = codDocumentoIdentificazione;
     }
 
-    public LocalDateTime getDataRilascio() {
+    public LocalDate getDataRilascio() {
         return dataRilascio;
     }
 
-    public void setDataRilascio(LocalDateTime dataRilascio) {
+    public void setDataRilascio(LocalDate dataRilascio) {
         this.dataRilascio = dataRilascio;
     }
 
-    public LocalDateTime getDataScadenza() {
+    public LocalDate getDataScadenza() {
         return dataScadenza;
     }
 
-    public void setDataScadenza(LocalDateTime dataScadenza) {
+    public void setDataScadenza(LocalDate dataScadenza) {
         this.dataScadenza = dataScadenza;
     }
 
@@ -132,19 +133,19 @@ public class DocumentoIdentificazioneEntity {
         this.codNazione = codNazione;
     }
 
-    public LocalDateTime getDataInizio() {
+    public LocalDate getDataInizio() {
         return dataInizio;
     }
 
-    public void setDataInizio(LocalDateTime dataInizio) {
+    public void setDataInizio(LocalDate dataInizio) {
         this.dataInizio = dataInizio;
     }
 
-    public LocalDateTime getDataFine() {
+    public LocalDate getDataFine() {
         return dataFine;
     }
 
-    public void setDataFine(LocalDateTime dataFine) {
+    public void setDataFine(LocalDate dataFine) {
         this.dataFine = dataFine;
     }
 
