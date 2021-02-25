@@ -1,6 +1,7 @@
 package it.previnet.progettofermi.presentation.adapter.service;
 
 import it.previnet.progettofermi.application.port.ExampleManager;
+import it.previnet.progettofermi.application.port.FermiException;
 import it.previnet.progettofermi.bean.ExampleInfo;
 import it.previnet.progettofermi.bean.request.NominativoSearch;
 import it.previnet.progettofermi.presentation.port.service.ExampleRestService;
@@ -8,6 +9,8 @@ import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
