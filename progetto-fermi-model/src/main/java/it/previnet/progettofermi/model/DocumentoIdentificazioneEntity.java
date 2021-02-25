@@ -4,6 +4,7 @@ package it.previnet.progettofermi.model;
 import it.previnet.progettofermi.model.enums.TipoDocumentoIdentificazioneEntity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -42,10 +43,10 @@ public class DocumentoIdentificazioneEntity {
     private String codNazione;
 
     @Column(name = "data_inizio")
-    private LocalDateTime dataInizio;
+    private LocalDate dataInizio;
 
     @Column(name = "data_fine")
-    private LocalDateTime dataFine;
+    private LocalDate dataFine;
 
     @Column(name = "data_timestamp")
     private LocalDateTime dataTimestamp;
@@ -132,19 +133,19 @@ public class DocumentoIdentificazioneEntity {
         this.codNazione = codNazione;
     }
 
-    public LocalDateTime getDataInizio() {
+    public LocalDate getDataInizio() {
         return dataInizio;
     }
 
-    public void setDataInizio(LocalDateTime dataInizio) {
+    public void setDataInizio(LocalDate dataInizio) {
         this.dataInizio = dataInizio;
     }
 
-    public LocalDateTime getDataFine() {
+    public LocalDate getDataFine() {
         return dataFine;
     }
 
-    public void setDataFine(LocalDateTime dataFine) {
+    public void setDataFine(LocalDate dataFine) {
         this.dataFine = dataFine;
     }
 
