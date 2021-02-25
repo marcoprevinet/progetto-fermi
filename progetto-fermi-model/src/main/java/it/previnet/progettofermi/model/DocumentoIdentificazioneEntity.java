@@ -25,10 +25,10 @@ public class DocumentoIdentificazioneEntity {
     private String codDocumentoIdentificazione;
 
     @Column(name = "data_rilascio")
-    private LocalDateTime dataRilascio;
+    private LocalDate dataRilascio;
 
     @Column(name = "data_scadenza")
-    private LocalDateTime dataScadenza;
+    private LocalDate dataScadenza;
 
     @Column(name = "den_ente_rilascio", length = 80)
     private String denEnteRilascio;
@@ -85,19 +85,19 @@ public class DocumentoIdentificazioneEntity {
         this.codDocumentoIdentificazione = codDocumentoIdentificazione;
     }
 
-    public LocalDateTime getDataRilascio() {
+    public LocalDate getDataRilascio() {
         return dataRilascio;
     }
 
-    public void setDataRilascio(LocalDateTime dataRilascio) {
+    public void setDataRilascio(LocalDate dataRilascio) {
         this.dataRilascio = dataRilascio;
     }
 
-    public LocalDateTime getDataScadenza() {
+    public LocalDate getDataScadenza() {
         return dataScadenza;
     }
 
-    public void setDataScadenza(LocalDateTime dataScadenza) {
+    public void setDataScadenza(LocalDate dataScadenza) {
         this.dataScadenza = dataScadenza;
     }
 
