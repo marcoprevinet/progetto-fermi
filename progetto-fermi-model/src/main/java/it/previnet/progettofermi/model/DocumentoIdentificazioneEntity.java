@@ -16,9 +16,6 @@ public class DocumentoIdentificazioneEntity {
     @Column(name = "token_documento_identificazion", nullable = false)
     private Integer tokenDocumentoIdentificazion;
 
-    @Column(name = "token_nominativo", nullable = false)
-    private Integer tokenNominativo;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_documento_identificazione", length = 2)
     private TipoDocumentoIdentificazioneEntity tipoDocumentoIdentificazione;
@@ -69,14 +66,6 @@ public class DocumentoIdentificazioneEntity {
 
     public void setTokenDocumentoIdentificazion(Integer tokenDocumentoIdentificazion) {
         this.tokenDocumentoIdentificazion = tokenDocumentoIdentificazion;
-    }
-
-    public Integer getTokenNominativo() {
-        return tokenNominativo;
-    }
-
-    public void setTokenNominativo(Integer tokenNominativo) {
-        this.tokenNominativo = tokenNominativo;
     }
 
     public TipoDocumentoIdentificazioneEntity getTipoDocumentoIdentificazione() {

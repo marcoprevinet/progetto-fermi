@@ -19,9 +19,6 @@ public class RecapitoNominativoEntity {
     @Column(name = "tipo_recapito_nominativo", length = 3)
     private TipoRecapitoNominativoEntity tipoRecapitoNominativo;
 
-    @Column(name = "token_nominativo", nullable = false)
-    private Integer tokenNominativo;
-
     @Column(name = "den_presso", length = 80)
     private String denPresso;
 
@@ -73,14 +70,6 @@ public class RecapitoNominativoEntity {
 
     public void setTipoRecapitoNominativo(TipoRecapitoNominativoEntity tipoRecapitoNominativo) {
         this.tipoRecapitoNominativo = tipoRecapitoNominativo;
-    }
-
-    public Integer getTokenNominativo() {
-        return tokenNominativo;
-    }
-
-    public void setTokenNominativo(Integer tokenNominativo) {
-        this.tokenNominativo = tokenNominativo;
     }
 
     public String getDenPresso() {
