@@ -1,4 +1,4 @@
 
-ext.quarkus.datasource.jdbc.url=TODO
-ext.quarkus.datasource.username=TODO
-ext.quarkus.datasource.password=TODO
+ext.quarkus.datasource.jdbc.url=jdbc:postgresql://cpweb1.previdom.previnet.it:5432/qabala
+ext.quarkus.datasource.username=qabalausr
+ext.quarkus.datasource.password=password
