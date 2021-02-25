@@ -3,6 +3,7 @@ package it.previnet.progettofermi.model;
 import it.previnet.progettofermi.model.enums.TipoSessoEntity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -36,7 +37,7 @@ public class NominativoEntity {
     private TipoSessoEntity tipoSesso;
 
     @Column(name = "data_nascita")
-    private LocalDateTime dataNascita;
+    private LocalDate dataNascita;
 
     @Column(name = "cod_provincia_nascita", length = 2)
     private String codProvinciaNascita;
@@ -122,11 +123,11 @@ public class NominativoEntity {
         this.tipoSesso = tipoSesso;
     }
 
-    public LocalDateTime getDataNascita() {
+    public LocalDate getDataNascita() {
         return dataNascita;
     }
 
-    public void setDataNascita(LocalDateTime dataNascita) {
+    public void setDataNascita(LocalDate dataNascita) {
         this.dataNascita = dataNascita;
     }
 
