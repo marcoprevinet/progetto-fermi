@@ -3,7 +3,7 @@ package it.previnet.progettofermi.presentation.adapter.service;
 import it.previnet.progettofermi.application.port.ExampleManager;
 import it.previnet.progettofermi.application.port.FermiException;
 import it.previnet.progettofermi.bean.ExampleInfo;
-import it.previnet.progettofermi.bean.request.ExampleSearch;
+import it.previnet.progettofermi.bean.request.NominativoSearch;
 import it.previnet.progettofermi.presentation.port.service.ExampleRestService;
 import org.jboss.logging.Logger;
 
@@ -23,13 +23,13 @@ public class ExampleRestServiceImpl implements ExampleRestService {
     ExampleManager exampleManager;
 
     @Override
-    public List<ExampleInfo> fetch(ExampleSearch exampleSearch) {
+    public List<ExampleInfo> fetch(NominativoSearch exampleSearch) {
         return exampleManager.fetch(exampleSearch);
     }
 
     @Override
-    public ExampleInfo fetch(Long token) {
-        ExampleSearch exampleSearch= new ExampleSearch();
+    public ExampleInfo fetch(Integer token) {
+        NominativoSearch exampleSearch= new NominativoSearch();
         exampleSearch.setToken(token);
         Optional<ExampleInfo> optionalExampleInfo= exampleManager.fetch(exampleSearch).stream().findFirst();
         if (optionalExampleInfo.isPresent()){

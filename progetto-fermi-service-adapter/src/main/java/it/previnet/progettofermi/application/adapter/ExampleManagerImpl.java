@@ -1,11 +1,11 @@
 package it.previnet.progettofermi.application.adapter;
 
-import it.previnet.progettofermi.application.adapter.mapper.ExampleEntityExampleInfoMapper;
+import it.previnet.progettofermi.application.adapter.mapper.NominativoEntityNominativoInfoMapper;
 import it.previnet.progettofermi.application.port.ExampleManager;
 import it.previnet.progettofermi.application.port.FermiException;
 import it.previnet.progettofermi.bean.ExampleInfo;
-import it.previnet.progettofermi.bean.request.ExampleSearch;
-import it.previnet.progettofermi.repository.port.ExampleRepository;
+import it.previnet.progettofermi.bean.request.NominativoSearch;
+import it.previnet.progettofermi.repository.port.NominativoRepository;
 import it.previnet.progettofermi.application.adapter.util.BeanUtil;
 import org.jboss.logging.Logger;
 
@@ -24,17 +24,17 @@ public class ExampleManagerImpl implements ExampleManager {
     private static final Logger logger = Logger.getLogger(ExampleManagerImpl.class);
 
     @Inject
-    ExampleRepository exampleRepository;
+    NominativoRepository exampleRepository;
 
     @Inject
-    ExampleEntityExampleInfoMapper exampleEntityExampleInfoMapper;
+    NominativoEntityNominativoInfoMapper exampleEntityExampleInfoMapper;
 
     @Inject
     BeanUtil beanUtil;
 
     @Override
     @Transactional
-    public List<ExampleInfo> fetch(ExampleSearch exampleSearch) {
+    public List<ExampleInfo> fetch(NominativoSearch exampleSearch) {
         if(1==1) {
             List<String> messages = new ArrayList<String>();
             messages.add("messaggio 1");
