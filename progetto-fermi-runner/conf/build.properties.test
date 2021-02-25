@@ -1,4 +1,4 @@
 
-ext.quarkus.datasource.jdbc.url=jdbc:postgresql://cpweb1.previdom.previnet.it:5432/qabala
-ext.quarkus.datasource.username=qabalausr
-ext.quarkus.datasource.password=password
+ext.quarkus.datasource.jdbc.url=NOT_SAFE_ON_GITHUB
+ext.quarkus.datasource.username=NOT_SAFE_ON_GITHUB
+ext.quarkus.datasource.password=NOT_SAFE_ON_GITHUB
