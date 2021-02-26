@@ -34,10 +34,10 @@ public class AnagraficaRestServiceImpl implements AnagraficaRestService {
     private static final Pattern FILENAME_PATTERN = Pattern.compile(".*filename=\"(.*)\"");
 
     @Inject
-    private ObjectMapper objectMapper;
+    ObjectMapper objectMapper;
 
     @Inject
-    private AnagraficaManager anagraficaManager;
+    AnagraficaManager anagraficaManager;
 
     @Override
     public Response getAnagrafica() {

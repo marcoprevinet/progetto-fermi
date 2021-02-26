@@ -17,11 +17,13 @@ public interface AnagraficaRestService {
     @GET
     @Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
     @PermitAll
+    @Path("/search")
     Response getAnagrafica();
 
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
     @PermitAll
+    @Path("/insert")
     Response postAnagrafica(MultipartFormDataInput input);
 }

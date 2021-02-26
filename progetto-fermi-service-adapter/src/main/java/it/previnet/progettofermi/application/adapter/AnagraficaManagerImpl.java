@@ -1,26 +1,5 @@
 package it.previnet.progettofermi.application.adapter;
 
-import it.previnet.progettofermi.application.port.AnagraficaManager;
-import it.previnet.progettofermi.application.port.FermiException;
-import it.previnet.progettofermi.bean.DocumentoIdentificazione;
-import it.previnet.progettofermi.bean.Nominativo;
-import it.previnet.progettofermi.bean.RecapitoNominativo;
-import it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione;
-import it.previnet.progettofermi.bean.enums.TipoRecapitoNominativo;
-import it.previnet.progettofermi.bean.enums.TipoSesso;
-import it.previnet.progettofermi.bean.request.AnagraficaRequest;
-import org.jboss.logging.Logger;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.transaction.Transactional;
-import java.io.IOException;
-import java.io.InputStream;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
 import static it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione.CARTA_IDENTITA;
 import static it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione.PASSAPORTO;
 import static it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione.PATENTE;
@@ -35,11 +14,53 @@ import static it.previnet.progettofermi.bean.enums.TipoSesso.MASCHIO;
 import static org.apache.commons.io.IOUtils.toByteArray;
 import static org.apache.commons.lang3.StringUtils.isAnyBlank;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.transaction.Transactional;
+
+import org.jboss.logging.Logger;
+
+import it.previnet.progettofermi.application.adapter.mapper.NominativoEntityNominativoMapper;
+import it.previnet.progettofermi.application.port.AnagraficaManager;
+import it.previnet.progettofermi.application.port.FermiException;
+import it.previnet.progettofermi.bean.DocumentoIdentificazione;
+import it.previnet.progettofermi.bean.Nominativo;
+import it.previnet.progettofermi.bean.RecapitoNominativo;
+import it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione;
+import it.previnet.progettofermi.bean.enums.TipoRecapitoNominativo;
+import it.previnet.progettofermi.bean.enums.TipoSesso;
+import it.previnet.progettofermi.bean.request.AnagraficaRequest;
+import it.previnet.progettofermi.bean.request.NominativoSearch;
+import it.previnet.progettofermi.model.NominativoEntity;
+import it.previnet.progettofermi.repository.port.DocumentoIdentificazioneRepository;
+import it.previnet.progettofermi.repository.port.NominativoRepository;
+import it.previnet.progettofermi.repository.port.RecapitoNominativoRepository;
+
 @ApplicationScoped
 public class AnagraficaManagerImpl implements AnagraficaManager {
     private static final Logger logger = Logger.getLogger(AnagraficaManagerImpl.class);
 
     private static Nominativo n;
+    
+    @Inject
+    NominativoRepository nominativoRepository;
+    
+    @Inject
+    RecapitoNominativoRepository recapitoNominativoRepository;
+    
+    @Inject
+    DocumentoIdentificazioneRepository documentoIdentificazioneRepository;
+    
+    @Inject
+    NominativoEntityNominativoMapper nominativoEntityNominativoMapper;
 
     @PostConstruct
     private void init() {
@@ -74,11 +95,12 @@ public class AnagraficaManagerImpl implements AnagraficaManager {
     public List<Nominativo> getAnagrafica() {
         logger.info("MANAGER getAnagrafica");
 
-        // TODO: invocazione repository
-        List<Nominativo> list = new ArrayList<>();
-        list.add(n);
+//        List<Nominativo> list = new ArrayList<>();
+//        list.add(n);
+        
+        return nominativoEntityNominativoMapper.mapEntitiesToBeans(nominativoRepository.fetch(new NominativoSearch()));
 
-        return list;
+        //return list;
     }
 
     @Override
@@ -189,8 +211,17 @@ public class AnagraficaManagerImpl implements AnagraficaManager {
 
         nominativo.setDocumentoIdentificazione(documentoIdentificazione);
 
-        // TODO: invocazione repository
-
+        NominativoEntity nominativoEntity = nominativoEntityNominativoMapper.mapBeanToEntity(nominativo);
+        nominativoEntity.getRecapitoNominativo().forEach(rn -> {
+            rn.setNominativo(nominativoEntity);
+            recapitoNominativoRepository.persist(rn);
+        });
+        nominativoEntity.getDocumentoIdentificazione().forEach(di -> {
+            di.setNominativo(nominativoEntity);
+            documentoIdentificazioneRepository.persist(di);
+        });
+        nominativoRepository.persist(nominativoEntity);
+        
         return n;
     }
 }
