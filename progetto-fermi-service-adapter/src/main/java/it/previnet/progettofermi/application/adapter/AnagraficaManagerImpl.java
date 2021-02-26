@@ -112,6 +112,8 @@ public class AnagraficaManagerImpl implements AnagraficaManager {
         TipoRecapitoNominativo tipoRecapitoNominativo = TipoRecapitoNominativo.lookup(request.getTipoRecapitoNominativo());
         TipoDocumentoIdentificazione tipoDocumentoIdentificazione = TipoDocumentoIdentificazione.lookup(request.getTipoDocumentoIdentificazione());
 
+        logger.debug("request is: " + request);
+
         boolean personaFisica = !isAnyBlank(request.getDenCognome(), request.getDenNome(), request.getCodFiscale());
         boolean personaGiuridica = !isAnyBlank(request.getDenRagioneSociale(), request.getCodPartitaIva());
 
