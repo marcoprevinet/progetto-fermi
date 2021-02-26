@@ -122,6 +122,12 @@ export default Vue.extend({
           sortDirection: "desc",
         },
         {
+          key: "denCognome",
+          label: "Cognome",
+          sortable: true,
+          sortDirection: "desc",
+        },
+        {
           key: "dataNascita",
           label: "Data di nascita",
           sortable: true,
@@ -140,7 +146,7 @@ export default Vue.extend({
       perPage: 30,
       pageOptions: [10, 15, 30, 60],
       filter: null,
-      filterOn: []
+      filterOn: ['denNome', 'denCognome', 'tipoSesso']
     };
   },
   mounted() {
@@ -159,7 +165,7 @@ export default Vue.extend({
   },
   methods: {
     getAnagraficaName(anagrafica) {
-      return anagrafica.tipoSesso === 'GIURIDICO' ? anagrafica.denRagioneSociale : `${anagrafica.denNome} ${anagrafica.denCognome}`
+      return anagrafica.tipoSesso === 'GIURIDICO' ? anagrafica.denRagioneSociale : anagrafica.denNome
     },
     onFiltered(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
