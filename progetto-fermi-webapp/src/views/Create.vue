@@ -16,94 +16,137 @@
                   </b-form-select>
                 </b-form-group>
 
-                <b-form-group v-if="isPhysicalPerson" label="Cognome">
-                  <validation-provider name="cognome" rules="required" v-slot="{errors, valid, touched}">
-                    <b-form-input
-                      v-model="form.denCognome"
-                      placeholder="Inserisci cognome"
-                      :state="touched ? valid : null"
-                    ></b-form-input>
-                    <!-- This will only be shown if the preceding input has an invalid state -->
-                    <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
-                  </validation-provider>
-                </b-form-group>
+                <template v-if="personType">
 
-                <b-form-group v-if="isPhysicalPerson" label="Nome">
-                  <validation-provider name="nome" rules="required" v-slot="{errors, valid, touched}">
-                    <b-form-input
-                      v-model="form.denNome"
-                      placeholder="Inserisci nome"
-                      :state="touched ? valid : null"
-                    ></b-form-input>
-                    <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
-                  </validation-provider>
-                </b-form-group>
+                  <b-form-group v-if="isPhysicalPerson" label="Cognome">
+                    <validation-provider name="cognome" rules="required" v-slot="{errors, valid, touched}">
+                      <b-form-input
+                        v-model="form.denCognome"
+                        placeholder="Inserisci cognome"
+                        :state="touched ? valid : null"
+                      ></b-form-input>
+                      <!-- This will only be shown if the preceding input has an invalid state -->
+                      <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
+                    </validation-provider>
+                  </b-form-group>
 
-                <b-form-group v-if="isPhysicalPerson" label="Email">
-                  <validation-provider name="email" rules="email" v-slot="{errors, valid, touched}">
-                    <b-form-input
-                      v-model="form.denEmail"
-                      placeholder="Inserisci email"
-                      :state="touched ? valid : null"
-                    ></b-form-input>
-                    <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
-                  </validation-provider>
-                </b-form-group>
+                  <b-form-group v-if="isPhysicalPerson" label="Nome">
+                    <validation-provider name="nome" rules="required" v-slot="{errors, valid, touched}">
+                      <b-form-input
+                        v-model="form.denNome"
+                        placeholder="Inserisci nome"
+                        :state="touched ? valid : null"
+                      ></b-form-input>
+                      <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
+                    </validation-provider>
+                  </b-form-group>
 
-                <b-form-group v-if="isPhysicalPerson" label="Codice Fiscale">
-                  <validation-provider name="codice fiscale" rules="required" v-slot="{errors, valid, touched}">
-                    <b-form-input
-                      v-model="form.codFiscale"
-                      placeholder="Inserisci codice fiscale"
-                      :state="touched ? valid : null"
-                    ></b-form-input>
-                    <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
-                  </validation-provider>
-                </b-form-group>
+                  <b-form-group label="Sesso">
+                    <validation-provider name="sesso" rules="required" v-slot="{errors, valid}">
+                      <b-form-select 
+                        v-model="form.tipoSesso"
+                        :options="tipoSessoOptions"
+                        text-field="description"
+                        value-field="code"
+                        :state="form.tipoSesso ? valid : null"
+                      ></b-form-select>
+                      <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
+                    </validation-provider>
+                  </b-form-group>
 
-                <b-form-group v-if="isPhysicalPerson" label="Data di nascita">
-                  <validation-provider name="data di nascita" rules="required" v-slot="{errors, valid, touched}">
-                    <b-form-datepicker 
-                      v-model="form.dataNascita"
-                      placeholder="Seleziona una data"
-                      :state="touched ? valid : null"
-                    ></b-form-datepicker>
-                    <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
-                  </validation-provider>
-                </b-form-group>
+                  <b-form-group v-if="isPhysicalPerson" label="Email">
+                    <validation-provider name="email" rules="email" v-slot="{errors, valid, touched}">
+                      <b-form-input
+                        v-model="form.denEmail"
+                        placeholder="Inserisci email"
+                        :state="touched ? valid : null"
+                      ></b-form-input>
+                      <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
+                    </validation-provider>
+                  </b-form-group>
 
-                <b-form-group v-if="isLegalPerson" label="Ragione sociale">
-                  <validation-provider name="ragione sociale" rules="required" v-slot="{errors, valid, touched}">
-                    <b-form-input
-                      v-model="form.denRagioneSociale"
-                      placeholder="Inserisci la ragione sociale"
-                      :state="touched ? valid : null"
-                    ></b-form-input>
-                    <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
-                  </validation-provider>
-                </b-form-group>
+                  <b-form-group v-if="isPhysicalPerson" label="Codice Fiscale">
+                    <validation-provider name="codice fiscale" rules="required" v-slot="{errors, valid, touched}">
+                      <b-form-input
+                        v-model="form.codFiscale"
+                        placeholder="Inserisci codice fiscale"
+                        :state="touched ? valid : null"
+                      ></b-form-input>
+                      <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
+                    </validation-provider>
+                  </b-form-group>
 
-                <b-form-group v-if="isLegalPerson" label="Partita iva">
-                  <validation-provider name="partita iva" rules="required" v-slot="{errors, valid, touched}">
-                    <b-form-input
-                      v-model="form.codPartitaIva"
-                      placeholder="Inserisci PIVA"
-                      :state="touched ? valid : null"
-                    ></b-form-input>
-                    <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
-                  </validation-provider>
-                </b-form-group>
+                  <b-form-group v-if="isPhysicalPerson" label="Data di nascita">
+                    <validation-provider name="data di nascita" rules="required" v-slot="{errors, valid, touched}">
+                      <b-form-datepicker 
+                        v-model="form.dataNascita"
+                        placeholder="Seleziona una data"
+                        :state="touched ? valid : null"
+                      ></b-form-datepicker>
+                      <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
+                    </validation-provider>
+                  </b-form-group>
 
-                <b-form-group v-if="personType" label="Documento">
-                  <validation-provider name="documento" rules="required" v-slot="{errors, valid, touched}">
-                    <b-form-file
-                      v-model="file"
-                      placeholder="Seleziona un file"
-                      :state="touched ? valid : null"
-                    ></b-form-file>
-                    <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
-                  </validation-provider>
-                </b-form-group>
+                  <b-form-group v-if="isLegalPerson" label="Ragione sociale">
+                    <validation-provider name="ragione sociale" rules="required" v-slot="{errors, valid, touched}">
+                      <b-form-input
+                        v-model="form.denRagioneSociale"
+                        placeholder="Inserisci la ragione sociale"
+                        :state="touched ? valid : null"
+                      ></b-form-input>
+                      <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
+                    </validation-provider>
+                  </b-form-group>
+
+                  <b-form-group v-if="isLegalPerson" label="Partita iva">
+                    <validation-provider name="partita iva" rules="required" v-slot="{errors, valid, touched}">
+                      <b-form-input
+                        v-model="form.codPartitaIva"
+                        placeholder="Inserisci PIVA"
+                        :state="touched ? valid : null"
+                      ></b-form-input>
+                      <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
+                    </validation-provider>
+                  </b-form-group>
+
+                  <b-form-group label="Tipo Documento">
+                    <validation-provider name="tipo documento" rules="required" v-slot="{errors, valid}">
+                      <b-form-select
+                        v-model="form.tipoDocumentoIdentificazione"
+                        :options="tipoDocumentoOptions"
+                        text-field="description"
+                        value-field="code"
+                        :state="form.tipoDocumentoIdentificazione ? valid : null"
+                      ></b-form-select>
+                      <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
+                    </validation-provider>
+                  </b-form-group>
+
+                  <b-form-group label="Documento">
+                    <validation-provider name="documento" rules="required" v-slot="{errors, valid, touched}">
+                      <b-form-file
+                        v-model="file"
+                        placeholder="Seleziona un file"
+                        :state="touched ? valid : null"
+                      ></b-form-file>
+                      <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
+                    </validation-provider>
+                  </b-form-group>
+
+                  <b-form-group label="Tipo Recapito">
+                    <validation-provider name="tipo recapito" rules="required" v-slot="{errors, valid}">
+                      <b-form-select
+                        v-model="form.tipoRecapitoNominativo"
+                        :options="tipoRecapitoOptions"
+                        text-field="description"
+                        value-field="code"
+                        :state="form.tipoRecapitoNominativo ? valid : null"
+                      ></b-form-select>
+                      <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
+                    </validation-provider>
+                  </b-form-group>
+
+                </template>
 
                 <b-button type="submit" :disabled="invalid" variant="primary">Invia</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
@@ -151,16 +194,27 @@ export default Vue.extend({
         denCognome: "",
         codFisclae: "",
         dataNascita: "",
-        tipoRecapito: "001",
-        tipoSesso: "M",
-        tipoDocumento: "01",
+        tipoRecapitoNominativo: "",
+        tipoSesso: "",
+        tipoDocumentoIdentificazione: "",
         denRagioneSociale: "",
         codPartitaIva: ""
       },
       file: null,
       personTypeOptions: [TIPO_PERSONA.FISICA, TIPO_PERSONA.GIURIDICA],
-      personType: null
+      personType: null,
+      tipoSessoOptions: [],
+      tipoRecapitoOptions: [],
+      tipoDocumentoOptions: []
     };
+  },
+  mounted() {
+    axios.get(`${SERVICE_BASE_URL}/tipo/sesso`)
+      .then((response) => this.tipoSessoOptions = response.data);
+    axios.get(`${SERVICE_BASE_URL}/tipo/recapito`)
+      .then((response) => this.tipoRecapitoOptions = response.data);
+    axios.get(`${SERVICE_BASE_URL}/tipo/documento`)
+      .then((response) => this.tipoDocumentoOptions = response.data);
   },
   computed: {
     isPhysicalPerson() {
@@ -178,11 +232,11 @@ export default Vue.extend({
 
       axios.post(`${SERVICE_BASE_URL}/anagrafica`, form)
         .then((response) => {
-          console.log(response);
           this.$bvToast.toast("Anagrafica inserita con successo", {
             title: "OK!",
             variant: "success"
           });
+          this.$router.push('list');
         })
         .catch((error) => {
           console.log(error);
@@ -205,9 +259,9 @@ export default Vue.extend({
       this.form.denCognome = "";
       this.form.codFisclae = "";
       this.form.dataNascita = "";
-      this.form.tipoRecapito = "";
+      this.form.tipoRecapitoNominativo = "";
       this.form.tipoSesso = "";
-      this.form.tipoDocumento = "";
+      this.form.tipoDocumentoIdentificazione = "";
       this.form.denRagioneSociale = "";
       this.form.codPartitaIva = "";
       this.file = null;
