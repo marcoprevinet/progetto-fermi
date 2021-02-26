@@ -5,7 +5,17 @@
         <b-col cols="12" sm="8">
           <b-card class="mt-3" header="Form">
             <b-form @submit.prevent="onSubmit" @reset.prevent="onReset">
-              <b-form-group label="Cognome" label-for="surname">
+
+              <b-form-group label="Tipo Persona" label-for="type">
+                <b-form-select v-model="personType" :options="personTypeOptions">
+                  <!-- This slot appears above the options from 'options' prop -->
+                  <template #first>
+                    <b-form-select-option :value="null" disabled>-- Seleziona un tipo --</b-form-select-option>
+                  </template>
+                </b-form-select>
+              </b-form-group>
+
+              <b-form-group v-if="isPhysicalPerson" label="Cognome" label-for="surname">
                 <b-form-input
                   id="surname"
                   v-model="form.denCognome"
@@ -13,7 +23,7 @@
                 ></b-form-input>
               </b-form-group>
 
-              <b-form-group label="Nome" label-for="name">
+              <b-form-group v-if="isPhysicalPerson" label="Nome" label-for="name">
                 <b-form-input
                   id="name"
                   v-model="form.denNome"
@@ -21,10 +31,7 @@
                 ></b-form-input>
               </b-form-group>
 
-              <b-form-group
-                label="Email"
-                label-for="email"
-              >
+              <b-form-group v-if="isPhysicalPerson" label="Email" label-for="email">
                 <b-form-input
                   id="email"
                   v-model="form.denEmail"
@@ -32,10 +39,7 @@
                 ></b-form-input>
               </b-form-group>
 
-              <b-form-group
-                label="Codice Fiscale"
-                label-for="cf"
-              >
+              <b-form-group v-if="isPhysicalPerson" label="Codice Fiscale" label-for="cf">
                 <b-form-input
                   id="cf"
                   v-model="form.codFiscale"
@@ -43,10 +47,7 @@
                 ></b-form-input>
               </b-form-group>
 
-              <b-form-group
-                label="Data di nascita"
-                label-for="data"
-              >
+              <b-form-group v-if="isPhysicalPerson" label="Data di nascita" label-for="data">
                 <b-form-datepicker 
                   id="date"
                   v-model="form.dataNascita"
@@ -54,13 +55,25 @@
                 ></b-form-datepicker>
               </b-form-group>
 
-              <b-form-group
-                id="input-group-4"
-                label="Documento"
-                label-for="input-4"
-              >
+              <b-form-group v-if="isLegalPerson" label="Ragione sociale" label-for="social">
+                <b-form-input
+                  id="social"
+                  v-model="form.denRagioneSociale"
+                  placeholder="Inserisci la ragione sociale"
+                ></b-form-input>
+              </b-form-group>
+
+              <b-form-group v-if="isLegalPerson" label="Partita iva" label-for="piva">
+                <b-form-input
+                  id="piva"
+                  v-model="form.codPartitaIva"
+                  placeholder="Inserisci PIVA"
+                ></b-form-input>
+              </b-form-group>
+
+              <b-form-group v-if="personType" label="Documento" label-for="doc">
                 <b-form-file
-                  id="input-4"
+                  id="doc"
                   v-model="file"
                   placeholder="Seleziona un file"
                 ></b-form-file>
@@ -86,6 +99,11 @@ import Vue from "vue";
 import axios from 'axios';
 import { SERVICE_BASE_URL } from '../config/AppConfig';
 
+const TIPO_PERSONA = {
+  FISICA: 'Fisica',
+  GIURIDICA: 'Giuridica'
+}
+
 export default Vue.extend({
   data() {
     return {
@@ -97,10 +115,22 @@ export default Vue.extend({
         dataNascita: "",
         tipoRecapito: "001",
         tipoSesso: "M",
-        tipoDocumento: "01"
+        tipoDocumento: "01",
+        denRagioneSociale: "",
+        codPartitaIva: ""
       },
-      file: null
+      file: null,
+      personTypeOptions: [TIPO_PERSONA.FISICA, TIPO_PERSONA.GIURIDICA],
+      personType: null
     };
+  },
+  computed: {
+    isPhysicalPerson() {
+      return this.personType === TIPO_PERSONA.FISICA
+    },
+    isLegalPerson() {
+      return this.personType === TIPO_PERSONA.GIURIDICA
+    },
   },
   methods: {
     onSubmit() {
@@ -110,7 +140,11 @@ export default Vue.extend({
 
       axios.post(`${SERVICE_BASE_URL}/anagrafica`, form)
         .then((response) => {
-          console.log(response)
+          console.log(response);
+          this.$bvToast.toast("Anagrafica inserita con successo", {
+            title: "OK!",
+            variant: "success"
+          });
         })
         .catch((error) => {
           console.log(error);
@@ -119,16 +153,25 @@ export default Vue.extend({
             message = (error.response.data).join(', ');
           }
           this.$bvToast.toast(message, {
-            title: "Ooops",
+            title: "Ooops!",
             variant: "danger"
           });
         })
     },
     onReset() {
       // Reset our form values
-      this.form.denEmail = "",
+      this.form.denEmail = "";
       this.form.denNome = "";
       this.form.denCognome = "";
+      this.form.codFisclae = "";
+      this.form.dataNascita = "";
+      this.form.tipoRecapito = "";
+      this.form.tipoSesso = "";
+      this.form.tipoDocumento = "";
+      this.form.denRagioneSociale = "";
+      this.form.codPartitaIva = "";
+      this.file = null;
+      this.personType = null;
     },
   },
 });
