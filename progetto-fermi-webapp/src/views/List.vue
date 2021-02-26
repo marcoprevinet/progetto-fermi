@@ -75,11 +75,11 @@
         @filtered="onFiltered"
       >
         <template #cell(name)="row">
-          {{ row.item.denNome }} {{ row.item.denCognome }}
+          {{ getAnagraficaName(row.item) }}
         </template>
 
         <template #cell(actions)="row">
-          <b-button size="sm" @click="row.toggleDetails">
+          <b-button size="sm" @click="row.toggleDetails" v-if="row.item.documentoIdentificazione || row.item.recapitoNominativo">
             {{ row.detailsShowing ? "Nascondi" : "Mostra" }} Dettagli
           </b-button>
         </template>
@@ -137,8 +137,8 @@ export default Vue.extend({
       ],
       totalRows: 1,
       currentPage: 1,
-      perPage: 5,
-      pageOptions: [5, 10, 15, 20],
+      perPage: 30,
+      pageOptions: [10, 15, 30, 60],
       filter: null,
       filterOn: []
     };
@@ -158,6 +158,9 @@ export default Vue.extend({
       })
   },
   methods: {
+    getAnagraficaName(anagrafica) {
+      return anagrafica.tipoSesso === 'GIURIDICO' ? anagrafica.denRagioneSociale : `${anagrafica.denNome} ${anagrafica.denCognome}`
+    },
     onFiltered(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
       this.totalRows = filteredItems.length;
