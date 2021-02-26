@@ -214,12 +214,7 @@ public class AnagraficaManagerImpl implements AnagraficaManager {
         nominativo.setDocumentoIdentificazione(documentoIdentificazione);
 
         NominativoEntity nominativoEntity = nominativoEntityNominativoMapper.mapBeanToEntity(nominativo);
-        nominativoEntity.getRecapitoNominativo().forEach(rn -> {
-            rn.setNominativo(nominativoEntity);
-        });
-        nominativoEntity.getDocumentoIdentificazione().forEach(di -> {
-            di.setNominativo(nominativoEntity);
-        });
+
         nominativoRepository.persist(nominativoEntity);
         nominativoEntity.getRecapitoNominativo().forEach(rn -> {
             recapitoNominativoRepository.persist(rn);

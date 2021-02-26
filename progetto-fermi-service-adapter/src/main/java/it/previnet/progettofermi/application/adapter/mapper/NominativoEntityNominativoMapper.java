@@ -84,6 +84,12 @@ public class NominativoEntityNominativoMapper extends AbstractMapper<NominativoE
         }
         entity.setRecapitoNominativo(bean.getRecapitoNominativo() == null ? null : new HashSet<RecapitoNominativoEntity>() {{ add(recapitoNominativoEntityRecapitoNominativoMapper.mapBeanToEntity( bean.getRecapitoNominativo())); }});
         entity.setTipoSesso(bean.getTipoSesso() == null ? null : tipoSessoEntityTipoSessoMapper.mapBeanToEntity(bean.getTipoSesso()));
+        entity.getRecapitoNominativo().forEach(rn -> {
+            rn.setNominativo(entity);
+        });
+        entity.getDocumentoIdentificazione().forEach(di -> {
+            di.setNominativo(entity);
+        });
         return entity;
     }
 
