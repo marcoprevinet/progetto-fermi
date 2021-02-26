@@ -87,7 +87,7 @@
         <template #row-details="row">
           <b-card title="Documento" bg-variant="light">
             <template v-for="(value, key) in row.item.documentoIdentificazione">
-              <div class="text-left" v-if="value" :key="key">
+              <div class="text-left" v-if="value && key!=='content'" :key="key">
                 {{ key }}: {{ value }}
               </div>
             </template>
