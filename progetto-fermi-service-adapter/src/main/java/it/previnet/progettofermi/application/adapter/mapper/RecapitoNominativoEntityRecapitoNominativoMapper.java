@@ -46,8 +46,6 @@ public class RecapitoNominativoEntityRecapitoNominativoMapper extends AbstractMa
     @Override
     public RecapitoNominativoEntity mapBeanToEntity(RecapitoNominativo bean, RecapitoNominativoEntity entity) {
         entity.setTokenRecapitoNominativo(bean.getTokenRecapitoNominativo());
-        
-        entity.setTokenRecapitoNominativo(bean.getTokenRecapitoNominativo());
         entity.setCodCap(bean.getCodCap());
         entity.setCodNazione(bean.getCodNazione());
         entity.setCodProvincia(bean.getCodProvincia());

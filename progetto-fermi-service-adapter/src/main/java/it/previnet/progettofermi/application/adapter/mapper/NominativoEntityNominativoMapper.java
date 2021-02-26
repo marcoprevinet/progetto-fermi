@@ -1,7 +1,10 @@
 package it.previnet.progettofermi.application.adapter.mapper;
 
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -73,9 +76,20 @@ public class NominativoEntityNominativoMapper extends AbstractMapper<NominativoE
         entity.setDenNome(bean.getDenNome());
         entity.setDenRagioneSociale(bean.getDenRagioneSociale());
         entity.setDenTelefono(bean.getDenTelefono());
-        entity.setDocumentoIdentificazione(bean.getDocumentoIdentificazione() == null ? null : new HashSet<DocumentoIdentificazioneEntity>() {{ documentoIdentificazioneEntityDocumentoIdentificazioneMapper.mapBeanToEntity(bean.getDocumentoIdentificazione()); }} );
-        entity.setRecapitoNominativo(bean.getRecapitoNominativo() == null ? null : new HashSet<RecapitoNominativoEntity>() {{ recapitoNominativoEntityRecapitoNominativoMapper.mapBeanToEntity( bean.getRecapitoNominativo()); }});
+        if(bean.getDocumentoIdentificazione() != null) {
+            Set<DocumentoIdentificazioneEntity> documentoIdentificazione = new HashSet<>(Arrays.asList(
+                    documentoIdentificazioneEntityDocumentoIdentificazioneMapper.mapBeanToEntity(bean.getDocumentoIdentificazione())
+            ));
+            entity.setDocumentoIdentificazione(documentoIdentificazione);
+        }
+        entity.setRecapitoNominativo(bean.getRecapitoNominativo() == null ? null : new HashSet<RecapitoNominativoEntity>() {{ add(recapitoNominativoEntityRecapitoNominativoMapper.mapBeanToEntity( bean.getRecapitoNominativo())); }});
         entity.setTipoSesso(bean.getTipoSesso() == null ? null : tipoSessoEntityTipoSessoMapper.mapBeanToEntity(bean.getTipoSesso()));
+        entity.getRecapitoNominativo().forEach(rn -> {
+            rn.setNominativo(entity);
+        });
+        entity.getDocumentoIdentificazione().forEach(di -> {
+            di.setNominativo(entity);
+        });
         return entity;
     }
 

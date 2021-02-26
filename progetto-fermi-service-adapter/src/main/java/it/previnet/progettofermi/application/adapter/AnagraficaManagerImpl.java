@@ -112,6 +112,8 @@ public class AnagraficaManagerImpl implements AnagraficaManager {
         TipoRecapitoNominativo tipoRecapitoNominativo = TipoRecapitoNominativo.lookup(request.getTipoRecapitoNominativo());
         TipoDocumentoIdentificazione tipoDocumentoIdentificazione = TipoDocumentoIdentificazione.lookup(request.getTipoDocumentoIdentificazione());
 
+        logger.debug("request is: " + request);
+
         boolean personaFisica = !isAnyBlank(request.getDenCognome(), request.getDenNome(), request.getCodFiscale());
         boolean personaGiuridica = !isAnyBlank(request.getDenRagioneSociale(), request.getCodPartitaIva());
 
@@ -212,16 +214,15 @@ public class AnagraficaManagerImpl implements AnagraficaManager {
         nominativo.setDocumentoIdentificazione(documentoIdentificazione);
 
         NominativoEntity nominativoEntity = nominativoEntityNominativoMapper.mapBeanToEntity(nominativo);
+
+        nominativoRepository.persist(nominativoEntity);
         nominativoEntity.getRecapitoNominativo().forEach(rn -> {
-            rn.setNominativo(nominativoEntity);
             recapitoNominativoRepository.persist(rn);
         });
         nominativoEntity.getDocumentoIdentificazione().forEach(di -> {
-            di.setNominativo(nominativoEntity);
             documentoIdentificazioneRepository.persist(di);
         });
-        nominativoRepository.persist(nominativoEntity);
-        
+
         return nominativoEntityNominativoMapper.mapEntityToBean(nominativoEntity);
     }
 }
