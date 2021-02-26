@@ -1,34 +1,29 @@
 package it.previnet.progettofermi.application.adapter.mapper;
 
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import it.previnet.progettofermi.bean.Nominativo;
+import it.previnet.progettofermi.bean.enums.TipoSesso;
+import it.previnet.progettofermi.model.DocumentoIdentificazioneEntity;
+import it.previnet.progettofermi.model.NominativoEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-
-import it.previnet.progettofermi.bean.Nominativo;
-import it.previnet.progettofermi.model.DocumentoIdentificazioneEntity;
-import it.previnet.progettofermi.model.NominativoEntity;
-import it.previnet.progettofermi.model.RecapitoNominativoEntity;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @ApplicationScoped
 public class NominativoEntityNominativoMapper extends AbstractMapper<NominativoEntity, Nominativo> {
 
     @Inject
-    TipoSessoEntityTipoSessoMapper tipoSessoEntityTipoSessoMapper;
-    
-    @Inject
     RecapitoNominativoEntityRecapitoNominativoMapper recapitoNominativoEntityRecapitoNominativoMapper;
-    
+
     @Inject
     DocumentoIdentificazioneEntityDocumentoIdentificazioneMapper documentoIdentificazioneEntityDocumentoIdentificazioneMapper;
 
     @Override
     public Nominativo mapEntityToBean(NominativoEntity entity) {
-        return mapEntityToBean(entity,new Nominativo());
+        return mapEntityToBean(entity, new Nominativo());
     }
 
     @Override
@@ -47,17 +42,16 @@ public class NominativoEntityNominativoMapper extends AbstractMapper<NominativoE
         bean.setDenNome(entity.getDenNome());
         bean.setDenRagioneSociale(entity.getDenRagioneSociale());
         bean.setDenTelefono(entity.getDenTelefono());
-        bean.setDocumentoIdentificazione(entity.getDocumentoIdentificazione() == null || entity.getDocumentoIdentificazione().size() == 0 ? null : documentoIdentificazioneEntityDocumentoIdentificazioneMapper.mapEntityToBean(entity.getDocumentoIdentificazione().stream().findFirst().orElseGet(null) ));
-        bean.setRecapitoNominativo(entity.getRecapitoNominativo() == null || entity.getRecapitoNominativo().size() == 0 ? null : recapitoNominativoEntityRecapitoNominativoMapper.mapEntityToBean( entity.getRecapitoNominativo().stream().findFirst().orElseGet(null) ));
-        bean.setTipoSesso(entity.getTipoSesso() == null ? null : tipoSessoEntityTipoSessoMapper.mapEntityToBean(entity.getTipoSesso()));
+        bean.setDocumentoIdentificazione(entity.getDocumentoIdentificazione() == null || entity.getDocumentoIdentificazione().size() == 0 ? null : documentoIdentificazioneEntityDocumentoIdentificazioneMapper.mapEntityToBean(entity.getDocumentoIdentificazione().stream().findFirst().orElseGet(null)));
+        bean.setRecapitoNominativo(entity.getRecapitoNominativo() == null || entity.getRecapitoNominativo().size() == 0 ? null : recapitoNominativoEntityRecapitoNominativoMapper.mapEntityToBean(entity.getRecapitoNominativo().stream().findFirst().orElseGet(null)));
+        bean.setTipoSesso(entity.getTipoSesso() == null ? null : TipoSesso.lookup(entity.getTipoSesso()));
         return bean;
     }
 
     @Override
     public NominativoEntity mapBeanToEntity(Nominativo bean) {
-        return mapBeanToEntity(bean,new NominativoEntity());
+        return mapBeanToEntity(bean, new NominativoEntity());
     }
-
 
     @Override
     public NominativoEntity mapBeanToEntity(Nominativo bean, NominativoEntity entity) {
@@ -76,14 +70,16 @@ public class NominativoEntityNominativoMapper extends AbstractMapper<NominativoE
         entity.setDenNome(bean.getDenNome());
         entity.setDenRagioneSociale(bean.getDenRagioneSociale());
         entity.setDenTelefono(bean.getDenTelefono());
-        if(bean.getDocumentoIdentificazione() != null) {
+        if (bean.getDocumentoIdentificazione() != null) {
             Set<DocumentoIdentificazioneEntity> documentoIdentificazione = new HashSet<>(Arrays.asList(
                     documentoIdentificazioneEntityDocumentoIdentificazioneMapper.mapBeanToEntity(bean.getDocumentoIdentificazione())
             ));
             entity.setDocumentoIdentificazione(documentoIdentificazione);
         }
-        entity.setRecapitoNominativo(bean.getRecapitoNominativo() == null ? null : new HashSet<RecapitoNominativoEntity>() {{ add(recapitoNominativoEntityRecapitoNominativoMapper.mapBeanToEntity( bean.getRecapitoNominativo())); }});
-        entity.setTipoSesso(bean.getTipoSesso() == null ? null : tipoSessoEntityTipoSessoMapper.mapBeanToEntity(bean.getTipoSesso()));
+        entity.setRecapitoNominativo(bean.getRecapitoNominativo() == null ? null : new HashSet<>() {{
+            add(recapitoNominativoEntityRecapitoNominativoMapper.mapBeanToEntity(bean.getRecapitoNominativo()));
+        }});
+        entity.setTipoSesso(bean.getTipoSesso() == null ? null : bean.getTipoSesso().value);
         entity.getRecapitoNominativo().forEach(rn -> {
             rn.setNominativo(entity);
         });

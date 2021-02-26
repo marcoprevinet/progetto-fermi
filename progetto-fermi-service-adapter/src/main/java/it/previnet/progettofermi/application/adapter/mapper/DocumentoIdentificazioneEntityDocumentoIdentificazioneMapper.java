@@ -1,21 +1,18 @@
 package it.previnet.progettofermi.application.adapter.mapper;
 
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
 import it.previnet.progettofermi.bean.DocumentoIdentificazione;
+import it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione;
 import it.previnet.progettofermi.model.DocumentoIdentificazioneEntity;
+
+import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class DocumentoIdentificazioneEntityDocumentoIdentificazioneMapper extends AbstractMapper<DocumentoIdentificazioneEntity, DocumentoIdentificazione> {
 
-    @Inject
-    TipoDocumentoIdentificazioneEntityTipoDocumentoIdentificazioneMapper tipoDocumentoIdentificazioneEntityTipoDocumentoIdentificazioneMapper;
-
     @Override
     public DocumentoIdentificazione mapEntityToBean(DocumentoIdentificazioneEntity entity) {
-        return mapEntityToBean(entity,new DocumentoIdentificazione());
+        return mapEntityToBean(entity, new DocumentoIdentificazione());
     }
 
     @Override
@@ -33,16 +30,15 @@ public class DocumentoIdentificazioneEntityDocumentoIdentificazioneMapper extend
         bean.setDenEnteRilascio(entity.getDenEnteRilascio());
         bean.setDenLocalitaRilascio(entity.getDenLocalitaRilascio());
         bean.setDenLogin(entity.getDenLogin());
-        bean.setTipoDocumentoIdentificazione(entity.getTipoDocumentoIdentificazione() == null ? null : tipoDocumentoIdentificazioneEntityTipoDocumentoIdentificazioneMapper.mapEntityToBean(entity.getTipoDocumentoIdentificazione()));
+        bean.setTipoDocumentoIdentificazione(entity.getTipoDocumentoIdentificazione() == null ? null : TipoDocumentoIdentificazione.lookup(entity.getTipoDocumentoIdentificazione()));
         bean.setTokenNominativo(entity.getNominativo().getTokenNominativo());
         return bean;
     }
 
     @Override
     public DocumentoIdentificazioneEntity mapBeanToEntity(DocumentoIdentificazione bean) {
-        return mapBeanToEntity(bean,new DocumentoIdentificazioneEntity());
+        return mapBeanToEntity(bean, new DocumentoIdentificazioneEntity());
     }
-
 
     @Override
     public DocumentoIdentificazioneEntity mapBeanToEntity(DocumentoIdentificazione bean, DocumentoIdentificazioneEntity entity) {
@@ -60,9 +56,7 @@ public class DocumentoIdentificazioneEntityDocumentoIdentificazioneMapper extend
         entity.setDenEnteRilascio(bean.getDenEnteRilascio());
         entity.setDenLocalitaRilascio(bean.getDenLocalitaRilascio());
         entity.setDenLogin(bean.getDenLogin());
-        entity.setTipoDocumentoIdentificazione(bean.getTipoDocumentoIdentificazione() == null ? null : tipoDocumentoIdentificazioneEntityTipoDocumentoIdentificazioneMapper.mapBeanToEntity(bean.getTipoDocumentoIdentificazione()));
+        entity.setTipoDocumentoIdentificazione(bean.getTipoDocumentoIdentificazione() == null ? null : bean.getTipoDocumentoIdentificazione().value);
         return entity;
     }
-
-
 }

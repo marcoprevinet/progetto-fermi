@@ -1,21 +1,18 @@
 package it.previnet.progettofermi.application.adapter.mapper;
 
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
 import it.previnet.progettofermi.bean.RecapitoNominativo;
+import it.previnet.progettofermi.bean.enums.TipoRecapitoNominativo;
 import it.previnet.progettofermi.model.RecapitoNominativoEntity;
+
+import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class RecapitoNominativoEntityRecapitoNominativoMapper extends AbstractMapper<RecapitoNominativoEntity, RecapitoNominativo> {
 
-    @Inject
-    TipoRecapitoNominativoEntityTipoRecapitoNominativoMapper tipoRecapitoNominativoEntityTipoRecapitoNominativoMapper;
-
     @Override
     public RecapitoNominativo mapEntityToBean(RecapitoNominativoEntity entity) {
-        return mapEntityToBean(entity,new RecapitoNominativo());
+        return mapEntityToBean(entity, new RecapitoNominativo());
     }
 
     @Override
@@ -32,16 +29,15 @@ public class RecapitoNominativoEntityRecapitoNominativoMapper extends AbstractMa
         bean.setDenLogin(entity.getDenLogin());
         bean.setDenNumeroCivico(entity.getDenNumeroCivico());
         bean.setDenPresso(entity.getDenPresso());
-        bean.setTipoRecapitoNominativo(entity.getTipoRecapitoNominativo() == null ? null : tipoRecapitoNominativoEntityTipoRecapitoNominativoMapper.mapEntityToBean(entity.getTipoRecapitoNominativo()));
+        bean.setTipoRecapitoNominativo(entity.getTipoRecapitoNominativo() == null ? null : TipoRecapitoNominativo.lookup(entity.getTipoRecapitoNominativo()));
         bean.setTokenNominativo(entity.getNominativo().getTokenNominativo());
         return bean;
     }
 
     @Override
     public RecapitoNominativoEntity mapBeanToEntity(RecapitoNominativo bean) {
-        return mapBeanToEntity(bean,new RecapitoNominativoEntity());
+        return mapBeanToEntity(bean, new RecapitoNominativoEntity());
     }
-
 
     @Override
     public RecapitoNominativoEntity mapBeanToEntity(RecapitoNominativo bean, RecapitoNominativoEntity entity) {
@@ -57,9 +53,7 @@ public class RecapitoNominativoEntityRecapitoNominativoMapper extends AbstractMa
         entity.setDenLogin(bean.getDenLogin());
         entity.setDenNumeroCivico(bean.getDenNumeroCivico());
         entity.setDenPresso(bean.getDenPresso());
-        entity.setTipoRecapitoNominativo(bean.getTipoRecapitoNominativo() == null ? null : tipoRecapitoNominativoEntityTipoRecapitoNominativoMapper.mapBeanToEntity(bean.getTipoRecapitoNominativo()));
+        entity.setTipoRecapitoNominativo(bean.getTipoRecapitoNominativo() == null ? null : bean.getTipoRecapitoNominativo().value);
         return entity;
     }
-
-
 }
