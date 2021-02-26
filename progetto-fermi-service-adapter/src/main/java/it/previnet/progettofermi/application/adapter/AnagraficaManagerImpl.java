@@ -222,6 +222,6 @@ public class AnagraficaManagerImpl implements AnagraficaManager {
         });
         nominativoRepository.persist(nominativoEntity);
         
-        return n;
+        return nominativoEntityNominativoMapper.mapEntityToBean(nominativoEntity);
     }
 }

@@ -1,11 +1,21 @@
 package it.previnet.progettofermi.model;
 
-import it.previnet.progettofermi.model.enums.TipoSessoEntity;
-
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import it.previnet.progettofermi.model.enums.TipoSessoEntity;
 
 @Entity
 @Table(name = "nominativo")
@@ -32,7 +42,7 @@ public class NominativoEntity {
     @Column(name = "den_ragione_sociale", length = 80)
     private String denRagioneSociale;
 
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = TipoSessoEnumConverter.class)
     @Column(name = "tipo_sesso", length = 1)
     private TipoSessoEntity tipoSesso;
 

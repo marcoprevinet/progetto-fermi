@@ -6,21 +6,29 @@ public enum TipoRecapitoNominativoEntity {
     SEDE_LEGALE("003"),
     SEDE_AMMINISTRATIVA("004");
 
-    public final String value;
+    private String value;
 
     TipoRecapitoNominativoEntity(String value) {
-        this.value = value;
+        this.setValue(value);
     }
 
     public static TipoRecapitoNominativoEntity lookup(String value) {
         if (value != null) {
             for (TipoRecapitoNominativoEntity t : values()) {
-                if (t.value.equals(value)) {
+                if (t.getValue().equals(value)) {
                     return t;
                 }
             }
         }
 
         return null;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    private void setValue(String value) {
+        this.value = value;
     }
 }
