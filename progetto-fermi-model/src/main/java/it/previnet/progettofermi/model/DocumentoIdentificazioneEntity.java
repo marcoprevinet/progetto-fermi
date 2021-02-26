@@ -17,7 +17,7 @@ public class DocumentoIdentificazioneEntity {
     @Column(name = "token_documento_identificazion", nullable = false)
     private Integer tokenDocumentoIdentificazion;
 
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = TipoDocumentoIdentificazioneEnumConverter.class)
     @Column(name = "tipo_documento_identificazione", length = 2)
     private TipoDocumentoIdentificazioneEntity tipoDocumentoIdentificazione;
 

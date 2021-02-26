@@ -16,7 +16,7 @@ public class RecapitoNominativoEntity {
     @Column(name = "token_recapito_nominativo", nullable = false)
     private Integer tokenRecapitoNominativo;
 
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = TipoRecapitoNominativoEnumConverter.class)
     @Column(name = "tipo_recapito_nominativo", length = 3)
     private TipoRecapitoNominativoEntity tipoRecapitoNominativo;
 
