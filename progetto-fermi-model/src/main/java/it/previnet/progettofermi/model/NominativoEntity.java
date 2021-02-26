@@ -1,11 +1,6 @@
 package it.previnet.progettofermi.model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Set;
-
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,8 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import it.previnet.progettofermi.model.enums.TipoSessoEntity;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "nominativo")
@@ -42,9 +38,8 @@ public class NominativoEntity {
     @Column(name = "den_ragione_sociale", length = 80)
     private String denRagioneSociale;
 
-    @Convert(converter = TipoSessoEnumConverter.class)
     @Column(name = "tipo_sesso", length = 1)
-    private TipoSessoEntity tipoSesso;
+    private String tipoSesso;
 
     @Column(name = "data_nascita")
     private LocalDate dataNascita;
@@ -70,10 +65,10 @@ public class NominativoEntity {
     @Column(name = "den_login", length = 80)
     private String denLogin;
 
-    @OneToMany(mappedBy="nominativo", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "nominativo", fetch = FetchType.LAZY)
     private Set<RecapitoNominativoEntity> recapitoNominativo;
 
-    @OneToMany(mappedBy="nominativo", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "nominativo", fetch = FetchType.LAZY)
     private Set<DocumentoIdentificazioneEntity> documentoIdentificazione;
 
 
@@ -125,11 +120,11 @@ public class NominativoEntity {
         this.denRagioneSociale = denRagioneSociale;
     }
 
-    public TipoSessoEntity getTipoSesso() {
+    public String getTipoSesso() {
         return tipoSesso;
     }
 
-    public void setTipoSesso(TipoSessoEntity tipoSesso) {
+    public void setTipoSesso(String tipoSesso) {
         this.tipoSesso = tipoSesso;
     }
 

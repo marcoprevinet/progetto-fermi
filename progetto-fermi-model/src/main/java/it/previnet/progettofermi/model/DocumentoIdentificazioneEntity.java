@@ -1,9 +1,16 @@
 package it.previnet.progettofermi.model;
 
 
-import it.previnet.progettofermi.model.enums.TipoDocumentoIdentificazioneEntity;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -17,9 +24,8 @@ public class DocumentoIdentificazioneEntity {
     @Column(name = "token_documento_identificazion", nullable = false)
     private Integer tokenDocumentoIdentificazion;
 
-    @Convert(converter = TipoDocumentoIdentificazioneEnumConverter.class)
     @Column(name = "tipo_documento_identificazione", length = 2)
-    private TipoDocumentoIdentificazioneEntity tipoDocumentoIdentificazione;
+    private String tipoDocumentoIdentificazione;
 
     @Column(name = "cod_documento_identificazione", length = 20)
     private String codDocumentoIdentificazione;
@@ -58,7 +64,7 @@ public class DocumentoIdentificazioneEntity {
     private byte[] content;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="token_nominativo")
+    @JoinColumn(name = "token_nominativo")
     private NominativoEntity nominativo;
 
     public Integer getTokenDocumentoIdentificazion() {
@@ -69,11 +75,11 @@ public class DocumentoIdentificazioneEntity {
         this.tokenDocumentoIdentificazion = tokenDocumentoIdentificazion;
     }
 
-    public TipoDocumentoIdentificazioneEntity getTipoDocumentoIdentificazione() {
+    public String getTipoDocumentoIdentificazione() {
         return tipoDocumentoIdentificazione;
     }
 
-    public void setTipoDocumentoIdentificazione(TipoDocumentoIdentificazioneEntity tipoDocumentoIdentificazione) {
+    public void setTipoDocumentoIdentificazione(String tipoDocumentoIdentificazione) {
         this.tipoDocumentoIdentificazione = tipoDocumentoIdentificazione;
     }
 
