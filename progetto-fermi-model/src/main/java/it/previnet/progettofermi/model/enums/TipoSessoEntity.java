@@ -5,21 +5,29 @@ public enum TipoSessoEntity {
     FEMMINA("F"),
     MASCHIO("M");
 
-    public final String value;
+    private String value;
 
     TipoSessoEntity(String value) {
-        this.value = value;
+        this.setValue(value);
     }
 
     public static TipoSessoEntity lookup(String value) {
         if (value != null) {
             for (TipoSessoEntity t : values()) {
-                if (t.value.equals(value)) {
+                if (t.getValue().equals(value)) {
                     return t;
                 }
             }
         }
 
         return null;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    private void setValue(String value) {
+        this.value = value;
     }
 }
