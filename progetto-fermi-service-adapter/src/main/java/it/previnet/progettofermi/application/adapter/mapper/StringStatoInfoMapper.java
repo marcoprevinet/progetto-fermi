@@ -6,7 +6,7 @@ import it.previnet.progettofermi.model.enums.StatoEntity;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class StatoEntityStatoInfoMapper extends AbstractMapper<String, StatoInfo> {
+public class StringStatoInfoMapper extends AbstractMapper<String, StatoInfo> {
 
 
     @Override

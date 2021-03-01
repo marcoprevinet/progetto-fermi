@@ -11,7 +11,7 @@ import javax.inject.Inject;
 public class ExampleEntityExampleInfoMapper extends AbstractMapper<ExampleEntity, ExampleInfo> {
 
     @Inject
-    StatoEntityStatoInfoMapper statoEntityStatoInfoMapper;
+    StringStatoInfoMapper stringStatoInfoMapper;
 
     @Override
     public ExampleInfo mapEntityToBean(ExampleEntity entity) {
@@ -21,7 +21,7 @@ public class ExampleEntityExampleInfoMapper extends AbstractMapper<ExampleEntity
     @Override
     public ExampleInfo mapEntityToBean(ExampleEntity entity, ExampleInfo bean) {
         bean.setToken(entity.getToken());
-        bean.setStatoInfo(statoEntityStatoInfoMapper.mapEntityToBean(entity.getStato()));
+        bean.setStatoInfo(stringStatoInfoMapper.mapEntityToBean(entity.getStato()));
         return bean;
     }
 
@@ -34,7 +34,7 @@ public class ExampleEntityExampleInfoMapper extends AbstractMapper<ExampleEntity
     @Override
     public ExampleEntity mapBeanToEntity(ExampleInfo bean, ExampleEntity entity) {
         entity.setToken(bean.getToken());
-        entity.setStato(statoEntityStatoInfoMapper.mapBeanToEntity(bean.getStatoInfo()));
+        entity.setStato(stringStatoInfoMapper.mapBeanToEntity(bean.getStatoInfo()));
         return entity;
     }
 
