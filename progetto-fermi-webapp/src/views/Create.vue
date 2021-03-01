@@ -8,7 +8,13 @@
               <b-form @submit.prevent="handeleSubmit" @reset.prevent="handleReset(reset)">
 
                 <b-form-group label="Tipo Persona">
-                  <b-form-select v-model="personType" :options="personTypeOptions" @change="handleReset(reset)">
+                  <b-form-select 
+                    v-model="personType" 
+                    :options="personTypeOptions" 
+                    @change="handleReset(reset)"
+                    text-field="description"
+                    value-field="code"
+                  >
                     <!-- This slot appears above the options from 'options' prop -->
                     <template #first>
                       <b-form-select-option :value="null" disabled>-- Seleziona un tipo --</b-form-select-option>
@@ -177,8 +183,14 @@ extend('required', required);
 localize('it', it);
 
 const TIPO_PERSONA = {
-  FISICA: 'Fisica',
-  GIURIDICA: 'Giuridica'
+  FISICA: {
+    code: 'PF',
+    description: 'Fisica'
+  },
+  GIURIDICA: {
+    code: 'PG',
+    description: 'Giuridica'
+  }
 }
 
 export default Vue.extend({
@@ -208,20 +220,12 @@ export default Vue.extend({
       tipoDocumentoOptions: []
     };
   },
-  mounted() {
-    axios.get(`${SERVICE_BASE_URL}/tipo/sesso`)
-      .then((response) => this.tipoSessoOptions = response.data);
-    axios.get(`${SERVICE_BASE_URL}/tipo/recapito`)
-      .then((response) => this.tipoRecapitoOptions = response.data);
-    axios.get(`${SERVICE_BASE_URL}/tipo/documento`)
-      .then((response) => this.tipoDocumentoOptions = response.data);
-  },
   computed: {
     isPhysicalPerson() {
-      return this.personType === TIPO_PERSONA.FISICA
+      return this.personType === TIPO_PERSONA.FISICA.code
     },
     isLegalPerson() {
-      return this.personType === TIPO_PERSONA.GIURIDICA
+      return this.personType === TIPO_PERSONA.GIURIDICA.code
     },
   },
   methods: {
@@ -231,7 +235,7 @@ export default Vue.extend({
       form.append('data', JSON.stringify(this.form));
 
       axios.post(`${SERVICE_BASE_URL}/anagrafica`, form)
-        .then((response) => {
+        .then(() => {
           this.$bvToast.toast("Anagrafica inserita con successo", {
             title: "OK!",
             variant: "success"
@@ -250,6 +254,33 @@ export default Vue.extend({
           });
         })
     },
+    getTipoSesso() {
+      axios.get(`${SERVICE_BASE_URL}/tipo/sesso?persona=${this.personType}`)
+        .then((response) => {
+          this.tipoSessoOptions = response.data;
+          if (response.data.length === 1) {
+            this.form.tipoSesso = this.tipoSessoOptions[0].code;
+          }
+        });
+    },
+    getTipoRecapito() {
+      axios.get(`${SERVICE_BASE_URL}/tipo/recapito?persona=${this.personType}`)
+        .then((response) => {
+          this.tipoRecapitoOptions = response.data;
+          if (response.data.length === 1) {
+            this.form.tipoRecapitoNominativo = this.tipoRecapitoOptions[0].code;
+          }
+        });
+    },
+    getTipoDocumento() {
+      axios.get(`${SERVICE_BASE_URL}/tipo/documento?persona=${this.personType}`)
+        .then((response) => {
+          this.tipoDocumentoOptions = response.data;
+          if (response.data.length === 1) {
+            this.form.tipoDocumentoIdentificazione = this.tipoDocumentoOptions[0].code;
+          }
+        });
+    },
     handleReset(validationResetFn) {
       validationResetFn();
 
@@ -265,6 +296,10 @@ export default Vue.extend({
       this.form.denRagioneSociale = "";
       this.form.codPartitaIva = "";
       this.file = null;
+
+      this.getTipoSesso();
+      this.getTipoRecapito();
+      this.getTipoDocumento();
     },
   },
 });
