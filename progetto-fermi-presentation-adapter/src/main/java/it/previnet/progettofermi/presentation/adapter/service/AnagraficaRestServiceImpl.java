@@ -5,22 +5,20 @@ import it.previnet.progettofermi.application.port.AnagraficaManager;
 import it.previnet.progettofermi.application.port.FermiException;
 import it.previnet.progettofermi.bean.Nominativo;
 import it.previnet.progettofermi.bean.request.AnagraficaRequest;
+import it.previnet.progettofermi.bean.request.NominativoSearch;
 import it.previnet.progettofermi.presentation.port.service.AnagraficaRestService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -40,9 +38,9 @@ public class AnagraficaRestServiceImpl implements AnagraficaRestService {
     AnagraficaManager anagraficaManager;
 
     @Override
-    public Response getAnagrafica() {
+    public Response getAnagrafica(NominativoSearch search) {
         logger.info("REST SERVICE getAnagrafica");
-        List<Nominativo> anagrafica = anagraficaManager.getAnagrafica();
+        List<Nominativo> anagrafica = anagraficaManager.getAnagrafica(search);
         return Response.ok(anagrafica).build();
     }
 
