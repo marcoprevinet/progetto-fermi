@@ -1,7 +1,7 @@
 package it.previnet.progettofermi.repository.port;
 
 public interface AbstractRepository<T> {
-    T findByToken(Long token);
+    T findByToken(Integer token);
 
     void persist(T entityToPersist);
 
@@ -9,5 +9,5 @@ public interface AbstractRepository<T> {
 
     void remove(T entityToDelete);
 
-    T findReference(Long token);
+    T findReference(Integer token);
 }

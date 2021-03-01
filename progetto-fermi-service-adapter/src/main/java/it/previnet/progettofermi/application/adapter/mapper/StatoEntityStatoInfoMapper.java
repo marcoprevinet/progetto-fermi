@@ -6,33 +6,33 @@ import it.previnet.progettofermi.model.enums.StatoEntity;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class StatoEntityStatoInfoMapper extends AbstractMapper<StatoEntity, StatoInfo> {
+public class StatoEntityStatoInfoMapper extends AbstractMapper<String, StatoInfo> {
 
 
     @Override
-    public StatoInfo mapEntityToBean(StatoEntity entity) {
+    public StatoInfo mapEntityToBean(String entity) {
         if (entity==null){
             return null;
         }
-        return StatoInfo.valueOf(entity.toString());
+        return StatoInfo.valueOf(entity);
     }
 
     @Override
-    public StatoInfo mapEntityToBean(StatoEntity entity, StatoInfo bean) {
+    public StatoInfo mapEntityToBean(String entity, StatoInfo bean) {
         return null;
     }
 
     @Override
-    public StatoEntity mapBeanToEntity(StatoInfo bean) {
+    public String mapBeanToEntity(StatoInfo bean) {
         if (bean==null){
             return null;
         }
-        return StatoEntity.valueOf(bean.toString());
+        return bean.toString();
     }
 
 
     @Override
-    public StatoEntity mapBeanToEntity(StatoInfo bean, StatoEntity entity) {
+    public String mapBeanToEntity(StatoInfo bean, String entity) {
         return null;
     }
 

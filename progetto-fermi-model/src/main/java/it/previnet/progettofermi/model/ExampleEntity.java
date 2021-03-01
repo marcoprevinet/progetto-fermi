@@ -9,28 +9,27 @@ import javax.persistence.*;
 public class ExampleEntity {
 
     @Id
-    @SequenceGenerator(name = "tokenApplicazioneGenerator", sequenceName = "applicazione_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tokenApplicazioneGenerator")
-    @Column(name = "token_applicazione", nullable = false)
-    private Long token;
+    @SequenceGenerator(name = "tokenExampleGenerator", sequenceName = "example_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tokenExampleGenerator")
+    @Column(name = "token_example", nullable = false)
+    private Integer token;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "stato", nullable = false, length = 255)
-    private StatoEntity stato;
+    private String stato;
 
-    public Long getToken() {
+    public Integer getToken() {
         return token;
     }
 
-    public void setToken(Long token) {
+    public void setToken(Integer token) {
         this.token = token;
     }
 
-    public StatoEntity getStato() {
+    public String getStato() {
         return stato;
     }
 
-    public void setStato(StatoEntity stato) {
+    public void setStato(String stato) {
         this.stato = stato;
     }
 
