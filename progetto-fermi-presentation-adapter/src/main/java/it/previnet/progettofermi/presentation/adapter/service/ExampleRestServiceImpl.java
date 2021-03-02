@@ -8,6 +8,7 @@ import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class ExampleRestServiceImpl implements ExampleRestService {
     }
 
     @Override
-    public ExampleInfo fetch(Long token) {
+    public ExampleInfo fetch(@NotNull Integer token) {
         ExampleSearch exampleSearch= new ExampleSearch();
         exampleSearch.setToken(token);
         Optional<ExampleInfo> optionalExampleInfo= exampleManager.fetch(exampleSearch).stream().findFirst();

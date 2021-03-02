@@ -18,8 +18,16 @@ public class ExampleRepositoryImpl extends AbstractRepositoryImpl<ExampleEntity>
 
     @Override
     public List<ExampleEntity> fetch(ExampleSearch applicazioneSearch) {
-        StringBuilder strQuery = new StringBuilder("SELECT e FROM ExampleEntity e WHERE 1=1");
+        StringBuilder strQuery = new StringBuilder("SELECT e FROM ExampleEntity e WHERE 1=1 ");
         Map<String, Object> parameters = new HashMap<>();
+
+        if (applicazioneSearch!= null) {
+            if (applicazioneSearch.getToken() != null) {
+                strQuery.append("AND token = :token ");
+                parameters.put("token", applicazioneSearch.getToken());
+            }
+        }
+
         TypedQuery<ExampleEntity> query = this.getEntityManager().createQuery(strQuery.toString(), ExampleEntity.class);
         parameters.forEach((k, v) -> query.setParameter(k, v));
         return query.getResultList();

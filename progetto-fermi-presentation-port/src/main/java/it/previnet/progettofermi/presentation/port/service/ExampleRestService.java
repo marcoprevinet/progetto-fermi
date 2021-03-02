@@ -22,6 +22,6 @@ public interface ExampleRestService {
     @Path("/search/{token}")
     @Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
     @PermitAll
-    ExampleInfo fetch(@NotNull @PathParam("token") Long token);
+    ExampleInfo fetch(@PathParam("token") @NotNull Integer token);
 
 }
