@@ -17,14 +17,18 @@ public class ExampleRepositoryImpl extends AbstractRepositoryImpl<ExampleEntity>
     private static final Logger logger = Logger.getLogger(ExampleRepositoryImpl.class);
 
     @Override
-    public List<ExampleEntity> fetch(ExampleSearch applicazioneSearch) {
+    public List<ExampleEntity> fetch(ExampleSearch exampleSearch) {
         StringBuilder strQuery = new StringBuilder("SELECT e FROM ExampleEntity e WHERE 1=1 ");
         Map<String, Object> parameters = new HashMap<>();
 
-        if (applicazioneSearch!= null) {
-            if (applicazioneSearch.getToken() != null) {
+        if (exampleSearch!= null) {
+            if (exampleSearch.getToken() != null) {
                 strQuery.append("AND token = :token ");
-                parameters.put("token", applicazioneSearch.getToken());
+                parameters.put("token", exampleSearch.getToken());
+            }
+            if(exampleSearch.getStato() != null) {
+                strQuery.append("AND stato = :stato ");
+                parameters.put("stato", exampleSearch.getStato());
             }
         }
 
