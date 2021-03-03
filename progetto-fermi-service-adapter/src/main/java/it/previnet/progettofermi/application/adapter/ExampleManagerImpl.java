@@ -1,11 +1,11 @@
 package it.previnet.progettofermi.application.adapter;
 
-import it.previnet.progettofermi.application.adapter.mapper.NominativoEntityNominativoInfoMapper;
+import it.previnet.progettofermi.application.adapter.mapper.ExampleEntityExampleInfoMapper;
+import it.previnet.progettofermi.application.adapter.util.BeanUtil;
 import it.previnet.progettofermi.application.port.ExampleManager;
 import it.previnet.progettofermi.bean.ExampleInfo;
-import it.previnet.progettofermi.bean.request.NominativoSearch;
-import it.previnet.progettofermi.repository.port.NominativoRepository;
-import it.previnet.progettofermi.application.adapter.util.BeanUtil;
+import it.previnet.progettofermi.bean.request.ExampleSearch;
+import it.previnet.progettofermi.repository.port.ExampleRepository;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -21,17 +21,17 @@ public class ExampleManagerImpl implements ExampleManager {
     private static final Logger logger = Logger.getLogger(ExampleManagerImpl.class);
 
     @Inject
-    NominativoRepository exampleRepository;
+    ExampleRepository exampleRepository;
 
     @Inject
-    NominativoEntityNominativoInfoMapper exampleEntityExampleInfoMapper;
+    ExampleEntityExampleInfoMapper exampleEntityExampleInfoMapper;
 
     @Inject
     BeanUtil beanUtil;
 
     @Override
     @Transactional
-    public List<ExampleInfo> fetch(NominativoSearch exampleSearch) {
+    public List<ExampleInfo> fetch(ExampleSearch exampleSearch) {
         return exampleRepository.fetch(exampleSearch).stream().map(exampleEntityExampleInfoMapper::mapEntityToBean).collect(Collectors.toList());
     }
 

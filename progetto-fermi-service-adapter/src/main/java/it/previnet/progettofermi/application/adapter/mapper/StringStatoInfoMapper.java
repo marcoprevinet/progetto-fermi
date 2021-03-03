@@ -1,7 +1,6 @@
 package it.previnet.progettofermi.application.adapter.mapper;
 
 import it.previnet.progettofermi.bean.enums.StatoInfo;
-import it.previnet.progettofermi.model.enums.StatoEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -11,7 +10,7 @@ public class StringStatoInfoMapper extends AbstractMapper<String, StatoInfo> {
 
     @Override
     public StatoInfo mapEntityToBean(String entity) {
-        if (entity==null){
+        if (entity == null) {
             return null;
         }
         return StatoInfo.valueOf(entity);
@@ -24,7 +23,7 @@ public class StringStatoInfoMapper extends AbstractMapper<String, StatoInfo> {
 
     @Override
     public String mapBeanToEntity(StatoInfo bean) {
-        if (bean==null){
+        if (bean == null) {
             return null;
         }
         return bean.toString();

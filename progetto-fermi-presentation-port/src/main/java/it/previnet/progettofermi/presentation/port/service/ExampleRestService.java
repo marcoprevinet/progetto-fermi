@@ -1,6 +1,7 @@
 package it.previnet.progettofermi.presentation.port.service;
 
 import it.previnet.progettofermi.bean.ExampleInfo;
+import it.previnet.progettofermi.bean.request.ExampleSearch;
 import it.previnet.progettofermi.bean.request.NominativoSearch;
 
 import javax.annotation.security.PermitAll;
@@ -16,7 +17,7 @@ public interface ExampleRestService {
     @Path("/search")
     @Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
     @PermitAll
-    List<ExampleInfo> fetch(@BeanParam NominativoSearch applicazioneSearch);
+    List<ExampleInfo> fetch(@BeanParam ExampleSearch applicazioneSearch);
 
     @GET
     @Path("/search/{token}")
