@@ -2,7 +2,7 @@ package it.previnet.progettofermi.bean.request;
 
 import javax.ws.rs.QueryParam;
 
-public class NominativoSearch {
+public class ExampleSearch {
     @QueryParam("token")
     private Integer token;
     
