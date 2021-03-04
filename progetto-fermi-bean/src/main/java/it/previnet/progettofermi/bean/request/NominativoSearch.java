@@ -5,6 +5,8 @@ import javax.ws.rs.QueryParam;
 public class NominativoSearch {
     @QueryParam("token")
     private Integer token;
+    
+    private String stato;
 
     @QueryParam("denCognome")
     private String denCognome;

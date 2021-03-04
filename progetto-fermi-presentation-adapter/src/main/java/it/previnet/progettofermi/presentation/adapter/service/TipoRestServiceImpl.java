@@ -12,7 +12,7 @@ import java.util.List;
 public class TipoRestServiceImpl implements TipoRestService {
 
     @Inject
-    private TipoManager tipoManager;
+    TipoManager tipoManager;
 
     @Override
     public Response getTipoSesso(String persona) {
