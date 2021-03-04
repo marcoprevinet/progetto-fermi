@@ -23,7 +23,7 @@ public class DocumentoIdentificazioneRepositoryImpl extends AbstractRepositoryIm
 
     @Override
     public List<DocumentoIdentificazioneEntity> fetch(NominativoSearch nominativoSearch) {
-        StringBuilder strQuery = new StringBuilder("SELECT n FROM documentoIdentificazione n WHERE 1=1");
+        StringBuilder strQuery = new StringBuilder("SELECT n FROM DocumentoIdentificazioneEntity n WHERE 1=1");
         Map<String, Object> parameters = new HashMap<>();
 
         if(nominativoSearch.getToken() != null) {
