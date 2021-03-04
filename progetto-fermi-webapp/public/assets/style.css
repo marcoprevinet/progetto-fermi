@@ -3,16 +3,11 @@
 @import 'typography.css';
 
 :root {
-  --blue: #1e90ff;
   --white: #ffffff;
   --orange: #D95707;
   --lightgray: #f3f3f3;
   --gray: #ced4da;
   --darkgray: #495057;
-}
-
-html {
-  color: var(--blue);
 }
 
 body {
