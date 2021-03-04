@@ -18,13 +18,13 @@ import java.util.stream.Collectors;
 public class TipoManagerImpl implements TipoManager {
 
     @Inject
-    private TipoSessoRepository tipoSessoRepository;
+    TipoSessoRepository tipoSessoRepository;
 
     @Inject
-    private TipoRecapitoNominativoRepository tipoRecapitoNominativoRepository;
+    TipoRecapitoNominativoRepository tipoRecapitoNominativoRepository;
 
     @Inject
-    private TipoDocumentoIdentificativoRepository tipoDocumentoIdentificativoRepository;
+    TipoDocumentoIdentificativoRepository tipoDocumentoIdentificativoRepository;
 
     @Override
     public List<CodeDescription> getTipoSesso() {

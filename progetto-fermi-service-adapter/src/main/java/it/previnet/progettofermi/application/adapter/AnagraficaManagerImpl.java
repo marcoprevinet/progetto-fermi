@@ -63,7 +63,7 @@ public class AnagraficaManagerImpl implements AnagraficaManager {
     NominativoEntityNominativoMapper nominativoEntityNominativoMapper;
 
     @PostConstruct
-    private void init() {
+    void init() {
         // FIXME rimuovere
         n = new Nominativo();
         n.setDenCognome("ROSSI");
