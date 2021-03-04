@@ -53,7 +53,7 @@ public class TipoManagerImpl implements TipoManager {
     private static Map<TipoPersona, List<TipoDocumentoIdentificazione>> TIPO_DOCUMENTO_MAP = new HashMap<>();
 
     @PostConstruct
-    private void init() {
+    void init() {
         TIPO_SESSO_MAP.put(FISICA, Arrays.asList(FEMMINA, MASCHIO));
         TIPO_SESSO_MAP.put(GIURIDICA, Arrays.asList(GIURIDICO));
 
