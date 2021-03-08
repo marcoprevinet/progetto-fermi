@@ -2,9 +2,7 @@ package it.previnet.progettofermi.presentation.adapter.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import it.previnet.progettofermi.application.port.ExampleManager;
-import it.previnet.progettofermi.application.port.FermiException;
 import it.previnet.progettofermi.bean.ExampleInfo;
-import it.previnet.progettofermi.bean.request.AnagraficaRequest;
 import it.previnet.progettofermi.bean.request.ExampleSearch;
 import it.previnet.progettofermi.presentation.port.service.ExampleRestService;
 import org.jboss.logging.Logger;
@@ -14,14 +12,10 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
-import javax.ws.rs.core.MultivaluedMap;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.regex.Matcher;
 
 @ApplicationScoped
 public class ExampleRestServiceImpl implements ExampleRestService {
