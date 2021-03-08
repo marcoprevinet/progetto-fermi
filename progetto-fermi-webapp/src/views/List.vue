@@ -146,7 +146,7 @@ export default Vue.extend({
       perPage: 30,
       pageOptions: [10, 15, 30, 60],
       filter: null,
-      filterOn: ['denNome', 'denCognome', 'tipoSesso']
+      filterOn: ['denRagioneSociale', 'denNome', 'denCognome', 'tipoSesso']
     };
   },
   mounted() {

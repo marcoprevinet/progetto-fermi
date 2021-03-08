@@ -1,33 +1,5 @@
 package it.previnet.progettofermi.application.adapter;
 
-import static it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione.CARTA_IDENTITA;
-import static it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione.PASSAPORTO;
-import static it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione.PATENTE;
-import static it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione.VISURA_CAMERALE;
-import static it.previnet.progettofermi.bean.enums.TipoRecapitoNominativo.INVIO_CORRISPONDENZA;
-import static it.previnet.progettofermi.bean.enums.TipoRecapitoNominativo.RESIDENZA;
-import static it.previnet.progettofermi.bean.enums.TipoRecapitoNominativo.SEDE_AMMINISTRATIVA;
-import static it.previnet.progettofermi.bean.enums.TipoRecapitoNominativo.SEDE_LEGALE;
-import static it.previnet.progettofermi.bean.enums.TipoSesso.FEMMINA;
-import static it.previnet.progettofermi.bean.enums.TipoSesso.GIURIDICO;
-import static it.previnet.progettofermi.bean.enums.TipoSesso.MASCHIO;
-import static org.apache.commons.io.IOUtils.toByteArray;
-import static org.apache.commons.lang3.StringUtils.isAnyBlank;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
-import org.jboss.logging.Logger;
-
 import it.previnet.progettofermi.application.adapter.mapper.NominativoEntityNominativoMapper;
 import it.previnet.progettofermi.application.port.AnagraficaManager;
 import it.previnet.progettofermi.application.port.FermiException;
@@ -43,64 +15,58 @@ import it.previnet.progettofermi.model.NominativoEntity;
 import it.previnet.progettofermi.repository.port.DocumentoIdentificazioneRepository;
 import it.previnet.progettofermi.repository.port.NominativoRepository;
 import it.previnet.progettofermi.repository.port.RecapitoNominativoRepository;
+import org.jboss.logging.Logger;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.transaction.Transactional;
+import java.io.IOException;
+import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import static it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione.CARTA_IDENTITA;
+import static it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione.PASSAPORTO;
+import static it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione.PATENTE;
+import static it.previnet.progettofermi.bean.enums.TipoDocumentoIdentificazione.VISURA_CAMERALE;
+import static it.previnet.progettofermi.bean.enums.TipoRecapitoNominativo.INVIO_CORRISPONDENZA;
+import static it.previnet.progettofermi.bean.enums.TipoRecapitoNominativo.RESIDENZA;
+import static it.previnet.progettofermi.bean.enums.TipoRecapitoNominativo.SEDE_AMMINISTRATIVA;
+import static it.previnet.progettofermi.bean.enums.TipoRecapitoNominativo.SEDE_LEGALE;
+import static it.previnet.progettofermi.bean.enums.TipoSesso.FEMMINA;
+import static it.previnet.progettofermi.bean.enums.TipoSesso.GIURIDICO;
+import static it.previnet.progettofermi.bean.enums.TipoSesso.MASCHIO;
+import static org.apache.commons.io.IOUtils.toByteArray;
+import static org.apache.commons.lang3.StringUtils.isAnyBlank;
 
 @ApplicationScoped
 public class AnagraficaManagerImpl implements AnagraficaManager {
     private static final Logger logger = Logger.getLogger(AnagraficaManagerImpl.class);
 
-    private static Nominativo n;
-    
     @Inject
     NominativoRepository nominativoRepository;
-    
+
     @Inject
     RecapitoNominativoRepository recapitoNominativoRepository;
-    
+
     @Inject
     DocumentoIdentificazioneRepository documentoIdentificazioneRepository;
-    
+
     @Inject
     NominativoEntityNominativoMapper nominativoEntityNominativoMapper;
 
-    @PostConstruct
-    private void init() {
-        // FIXME rimuovere
-        n = new Nominativo();
-        n.setDenCognome("ROSSI");
-        n.setDenNome("MARIO");
-        n.setDataNascita(LocalDate.now());
-        n.setCodFiscale("RSSMRA");
-        n.setTipoSesso(MASCHIO);
-
-        RecapitoNominativo rn = new RecapitoNominativo();
-        rn.setCodNazione("ITA");
-        rn.setCodProvincia("TV");
-        rn.setDenLocalita("PREGANZIOL");
-        rn.setDenNumeroCivico("24");
-        rn.setDenIndirizzo("VIA FORLANINI");
-        rn.setCodCap("31022");
-        rn.setTipoRecapitoNominativo(RESIDENZA);
-        n.setRecapitoNominativo(rn);
-
-        DocumentoIdentificazione di = new DocumentoIdentificazione();
-        di.setTipoDocumentoIdentificazione(CARTA_IDENTITA);
-        di.setDenEnteRilascio("COMUNE DI PREGANZIOL");
-        di.setDataRilascio(LocalDate.now());
-        di.setCodDocumentoIdentificazione("AB00000XY");
-        n.setDocumentoIdentificazione(di);
-    }
-
     @Override
     @Transactional
-    public List<Nominativo> getAnagrafica() {
+    public List<Nominativo> getAnagrafica(NominativoSearch search) {
         logger.info("MANAGER getAnagrafica");
 
-//        List<Nominativo> list = new ArrayList<>();
-//        list.add(n);
-        
-        return nominativoEntityNominativoMapper.mapEntitiesToBeans(nominativoRepository.fetch(new NominativoSearch()));
+        if (search == null) {
+            search = new NominativoSearch();
+        }
 
-        //return list;
+        return nominativoEntityNominativoMapper.mapEntitiesToBeans(nominativoRepository.fetch(search));
     }
 
     @Override
