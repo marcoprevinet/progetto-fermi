@@ -8,4 +8,6 @@ public interface ExampleManager {
     
     List<ExampleInfo> fetch(ExampleSearch search);
 
+    ExampleInfo insert(ExampleInfo exampleInfo);
+
 }

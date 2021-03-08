@@ -4,6 +4,7 @@ import it.previnet.progettofermi.application.adapter.mapper.ExampleEntityExample
 import it.previnet.progettofermi.application.port.ExampleManager;
 import it.previnet.progettofermi.bean.ExampleInfo;
 import it.previnet.progettofermi.bean.request.ExampleSearch;
+import it.previnet.progettofermi.model.ExampleEntity;
 import it.previnet.progettofermi.repository.port.ExampleRepository;
 import it.previnet.progettofermi.application.adapter.util.BeanUtil;
 import org.jboss.logging.Logger;
@@ -33,6 +34,15 @@ public class ExampleManagerImpl implements ExampleManager {
     @Transactional
     public List<ExampleInfo> fetch(ExampleSearch exampleSearch) {
         return exampleRepository.fetch(exampleSearch).stream().map(exampleEntityExampleInfoMapper::mapEntityToBean).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public ExampleInfo insert(ExampleInfo exampleInfo) {
+        ExampleEntity exampleEntity = exampleEntityExampleInfoMapper.mapBeanToEntity(exampleInfo);
+        exampleRepository.persist(exampleEntity);
+
+        return exampleEntityExampleInfoMapper.mapEntityToBean(exampleEntity);
     }
 
 }
