@@ -1,8 +1,15 @@
 package it.previnet.progettofermi.model;
 
-import it.previnet.progettofermi.model.enums.TipoRecapitoNominativoEntity;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -16,9 +23,8 @@ public class RecapitoNominativoEntity {
     @Column(name = "token_recapito_nominativo", nullable = false)
     private Integer tokenRecapitoNominativo;
 
-    @Convert(converter = TipoRecapitoNominativoEnumConverter.class)
     @Column(name = "tipo_recapito_nominativo", length = 3)
-    private TipoRecapitoNominativoEntity tipoRecapitoNominativo;
+    private String tipoRecapitoNominativo;
 
     @Column(name = "den_presso", length = 80)
     private String denPresso;
@@ -54,7 +60,7 @@ public class RecapitoNominativoEntity {
     private String denLogin;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="token_nominativo")
+    @JoinColumn(name = "token_nominativo")
     private NominativoEntity nominativo;
 
     public Integer getTokenRecapitoNominativo() {
@@ -65,11 +71,11 @@ public class RecapitoNominativoEntity {
         this.tokenRecapitoNominativo = tokenRecapitoNominativo;
     }
 
-    public TipoRecapitoNominativoEntity getTipoRecapitoNominativo() {
+    public String getTipoRecapitoNominativo() {
         return tipoRecapitoNominativo;
     }
 
-    public void setTipoRecapitoNominativo(TipoRecapitoNominativoEntity tipoRecapitoNominativo) {
+    public void setTipoRecapitoNominativo(String tipoRecapitoNominativo) {
         this.tipoRecapitoNominativo = tipoRecapitoNominativo;
     }
 

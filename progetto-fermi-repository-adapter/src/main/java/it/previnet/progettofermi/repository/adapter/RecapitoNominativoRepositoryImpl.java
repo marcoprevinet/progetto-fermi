@@ -21,7 +21,7 @@ public class RecapitoNominativoRepositoryImpl extends AbstractRepositoryImpl<Rec
 
     @Override
     public List<RecapitoNominativoEntity> fetch(NominativoSearch nominativoSearch) {
-        StringBuilder strQuery = new StringBuilder("SELECT n FROM recapitoNominativo n WHERE 1=1");
+        StringBuilder strQuery = new StringBuilder("SELECT n FROM RecapitoNominativoEntity n WHERE 1=1");
         Map<String, Object> parameters = new HashMap<>();
 
         if(nominativoSearch.getToken() != null) {

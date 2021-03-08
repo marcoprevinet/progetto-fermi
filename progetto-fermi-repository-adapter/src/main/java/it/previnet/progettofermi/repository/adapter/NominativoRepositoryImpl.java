@@ -24,9 +24,34 @@ public class NominativoRepositoryImpl extends AbstractRepositoryImpl<NominativoE
         StringBuilder strQuery = new StringBuilder("SELECT n FROM NominativoEntity n WHERE 1=1");
         Map<String, Object> parameters = new HashMap<>();
 
-        if(nominativoSearch.getToken() != null) {
+        if (nominativoSearch.getToken() != null) {
             strQuery.append(" AND n.tokenNominativo = :tokenNominativo ");
             parameters.put("tokenNominativo", nominativoSearch.getToken());
+        }
+
+        if (nominativoSearch.getDenCognome() != null) {
+            strQuery.append(" AND n.denCognome = :denCognome ");
+            parameters.put("denCognome", nominativoSearch.getDenCognome());
+        }
+
+        if (nominativoSearch.getDenNome() != null) {
+            strQuery.append(" AND n.denNome = :denNome ");
+            parameters.put("denNome", nominativoSearch.getDenNome());
+        }
+
+        if (nominativoSearch.getDenRagioneSociale() != null) {
+            strQuery.append(" AND n.denRagioneSociale = :denRagioneSociale ");
+            parameters.put("denRagioneSociale", nominativoSearch.getDenRagioneSociale());
+        }
+
+        if (nominativoSearch.getCodFiscale() != null) {
+            strQuery.append(" AND n.codFiscale = :codFiscale ");
+            parameters.put("codFiscale", nominativoSearch.getCodFiscale());
+        }
+
+        if (nominativoSearch.getCodPartitaIva() != null) {
+            strQuery.append(" AND n.codPartitaIva = :codPartitaIva ");
+            parameters.put("codPartitaIva", nominativoSearch.getCodPartitaIva());
         }
 
         TypedQuery<NominativoEntity> query = this.getEntityManager().createQuery(strQuery.toString(), NominativoEntity.class);
