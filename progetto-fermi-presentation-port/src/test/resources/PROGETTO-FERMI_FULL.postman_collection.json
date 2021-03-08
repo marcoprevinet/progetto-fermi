@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "983f6b61-b98e-4725-a3fc-141a47a5c722",
+		"name": "PROGETTO FERMI - full",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "example search queryParam",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/progetto-fermi/api/example/search?token=-999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"progetto-fermi",
+						"api",
+						"example",
+						"search"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "-999"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "example search pathParam",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/progetto-fermi/api/example/search/-999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"progetto-fermi",
+						"api",
+						"example",
+						"search",
+						"-999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get anagrafica",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/progetto-fermi/api/anagrafica?denCognome=ROSSI",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"progetto-fermi",
+						"api",
+						"anagrafica"
+					],
+					"query": [
+						{
+							"key": "denCognome",
+							"value": "ROSSI"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post anagrafica",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{\"codFiscale\": \"RSSMRA\",\"codPartitaIva\": null,\"denCognome\": \"ROSSI\",\"denNome\": \"MARIO\",\"denRagioneSociale\": null,\"tipoSesso\": \"M\",\"dataNascita\": \"1980-01-01\",\"codProvinciaNascita\": \"TV\",\"denComuneNascita\": \"TREVISO\",\"codNazioneCittadinanza\": \"ITA\",\"denEmail\": \"email@email.it\",\"denTelefono\": \"0123456\",\"tipoRecapitoNominativo\": \"001\",\"denPresso\": null,\"denNumeroCivico\": \"24\",\"codCap\": \"31022\",\"denLocalita\": \"PREGANZIOL\",\"codProvincia\": \"TV\",\"codNazione\": \"ITA\",\"denIndirizzo\": \"VIA FORLANINI\",\"tipoDocumentoIdentificazione\": \"01\",\"codDocumentoIdentificazione\": \"AB00000XY\",\"dataRilascio\": \"2020-01-01\",\"dataScadenza\": \"2030-01-01\",\"denEnteRilascio\": \"COMUNE\",\"denLocalitaRilascio\": \"PREGANZIOL\",\"codSiglaProvinciaRilascio\": \"TV\",\"codNazioneRilascio\": \"ITA\"}",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/bittoa/Desktop/IT_WASBP.doc"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/progetto-fermi/api/anagrafica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"progetto-fermi",
+						"api",
+						"anagrafica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tipoSesso",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/progetto-fermi/api/tipo/sesso?persona=PF",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"progetto-fermi",
+						"api",
+						"tipo",
+						"sesso"
+					],
+					"query": [
+						{
+							"key": "persona",
+							"value": "PF"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tipoRecapitoNominativo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/progetto-fermi/api/tipo/recapito?persona=PF",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"progetto-fermi",
+						"api",
+						"tipo",
+						"recapito"
+					],
+					"query": [
+						{
+							"key": "persona",
+							"value": "PF"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tipoDocumentoIdentificativo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/progetto-fermi/api/tipo/documento?persona=PF",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"progetto-fermi",
+						"api",
+						"tipo",
+						"documento"
+					],
+					"query": [
+						{
+							"key": "persona",
+							"value": "PF"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

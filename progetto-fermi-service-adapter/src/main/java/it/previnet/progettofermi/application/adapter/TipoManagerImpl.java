@@ -40,20 +40,20 @@ import static it.previnet.progettofermi.bean.enums.TipoSesso.MASCHIO;
 public class TipoManagerImpl implements TipoManager {
 
     @Inject
-    private TipoSessoRepository tipoSessoRepository;
+    TipoSessoRepository tipoSessoRepository;
 
     @Inject
-    private TipoRecapitoNominativoRepository tipoRecapitoNominativoRepository;
+    TipoRecapitoNominativoRepository tipoRecapitoNominativoRepository;
 
     @Inject
-    private TipoDocumentoIdentificativoRepository tipoDocumentoIdentificativoRepository;
+    TipoDocumentoIdentificativoRepository tipoDocumentoIdentificativoRepository;
 
     private static Map<TipoPersona, List<TipoSesso>> TIPO_SESSO_MAP = new HashMap<>();
     private static Map<TipoPersona, List<TipoRecapitoNominativo>> TIPO_RECAPITO_MAP = new HashMap<>();
     private static Map<TipoPersona, List<TipoDocumentoIdentificazione>> TIPO_DOCUMENTO_MAP = new HashMap<>();
 
     @PostConstruct
-    private void init() {
+    void init() {
         TIPO_SESSO_MAP.put(FISICA, Arrays.asList(FEMMINA, MASCHIO));
         TIPO_SESSO_MAP.put(GIURIDICA, Arrays.asList(GIURIDICO));
 

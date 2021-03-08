@@ -235,7 +235,8 @@ export default Vue.extend({
       form.append('data', JSON.stringify(this.form));
 
       axios.post(`${SERVICE_BASE_URL}/anagrafica`, form)
-        .then(() => {
+        .then((response) => {
+          console.log(response);
           this.$bvToast.toast("Anagrafica inserita con successo", {
             title: "OK!",
             variant: "success"
