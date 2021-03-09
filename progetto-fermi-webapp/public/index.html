@@ -29,35 +29,35 @@
         <h2 class="title">Crea un nuovo account</h2>
         <form method="post" action="#">
           <div class="row">
-            <label for="type">Tipo persona</label>
-            <select name="type" id="type">
+            <label for="tipo">Tipo persona</label>
+            <select name="tipo" id="tipo">
               <option value="fisica">Persona fisica</option>
               <option value="giuridica">Persona giuridica</option>
             </select>
           </div>
           <div class="row">
-            <label for="firstname">Nome</label>
-            <input type="text" id="firstname" name="firstname" />
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="nome" placeholder="es: Mario"/>
           </div>
           <div class="row">
-            <label for="lastname">Cognome</label>
-            <input type="text" id="lastname" name="lastname" />
+            <label for="surname">Cognome</label>
+            <input type="text" id="surname" name="cognome" placeholder="es: Rossi"/>
           </div>
           <div class="row">
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" />
+            <input type="text" id="email" name="email" placeholder="mario.rossi@email.it"/>
           </div>
           <div class="row">
             <label for="cf">Codice fiscale</label>
-            <input type="text" id="cf" name="cf" />
+            <input type="text" id="cf" name="codice fiscale" placeholder="RSSMRA00A01H501C"/>
           </div>
           <div class="row">
             <label for="birthdate">Data di nascita</label>
-            <input type="date" id="birthdate" name="birthdate" />
+            <input type="date" id="birthdate" name="data di nascita"/>
           </div>
           <div class="row">
             <label for="doc">Carica documento</label>
-            <input type="file" id="doc" name="doc" />
+            <input type="file" id="doc" name="documento"/>
           </div>
           <div class="row text-center">
             <input type="submit" value="Invia" />
@@ -66,9 +66,28 @@
         </form>
       </main>
       <aside class="text-right">
-        <h2 class="title">Response</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam harum aut ipsam ducimus consequuntur aliquam quasi id laborum voluptatum minima, eligendi ab. Sint atque ea autem, reiciendis perspiciatis suscipit! Nisi?
+        <h2 class="title">Riepilogo dati</h2>
+        <p id="riepilogo"></p>
       </aside>
     </div>
+    <script>
+      document.querySelector('form').addEventListener('submit', function(e) {
+        //prevent the normal submission of the form
+        e.preventDefault();
+
+        var data = new FormData(this);
+        var response = document.getElementById("riepilogo");
+        
+        // logs "title", "Go to the beach", etc.
+        for (let [key, value] of data) {
+          let span = document.createElement('span');
+          let br = document.createElement('br');
+          let text = value.length > 0 ? value: ' &minus; ';
+          span.innerHTML = key +': ' + text;
+          response.appendChild(span);
+          response.appendChild(br);
+        }  
+      });    
+    </script>
   </body>
 </html>
