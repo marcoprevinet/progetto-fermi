@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import it.previnet.progettofermi.application.port.ExampleManager;
 import it.previnet.progettofermi.bean.ExampleInfo;
 import it.previnet.progettofermi.bean.request.ExampleSearch;
-import it.previnet.progettofermi.bean.request.NominativoSearch;
 import it.previnet.progettofermi.presentation.port.service.ExampleRestService;
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
