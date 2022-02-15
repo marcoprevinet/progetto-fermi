@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="root [clean package quarkus:dev]" type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="launch full" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings" />
@@ -20,6 +20,7 @@
             <map>
               <entry key="snapshot" value="true" />
               <entry key="test" value="true" />
+              <entry key="webapp" value="true" />
             </map>
           </option>
           <option name="resolveToWorkspace" value="false" />
