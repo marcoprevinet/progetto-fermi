@@ -19,6 +19,7 @@ public class Nominativo {
     private String codNazioneCittadinanza;
     private String denEmail;
     private String denTelefono;
+	private String denCellulare;
     private LocalDateTime dataTimestamp;
     private String denLogin;
     private RecapitoNominativo recapitoNominativo;
