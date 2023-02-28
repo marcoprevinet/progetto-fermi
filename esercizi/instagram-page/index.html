@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Studio Ghibli</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <aside class="col-12 col-sm-3 col-xl-2 sidebar">
+        <div class="col-8">
+          <img class="img-fluid"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1920px-Instagram_logo.svg.png"
+            alt="instagram logo">
+        </div>
+
+        <nav class="links">
+          <ul>
+            <li>
+              <a href=""><i class="bi bi-house"></i>Home</a>
+            </li>
+            <li>
+              <a href="#"><i class="bi bi-search"></i>Cerca</a>
+            </li>
+            <li>
+              <a href="#"><i class="bi bi-compass"></i>Esplora</a>
+            </li>
+            <li>
+              <a href="#"><i class="bi bi-file-earmark-play"></i>Reels</a>
+            </li>
+            <li>
+              <a href="#"><i class="bi bi-send"></i>Messaggi</a>
+            </li>
+            <li>
+              <a href="#"><i class="bi bi-heart"></i>Notifiche</a>
+            </li>
+            <li>
+              <a href="#"><i class="bi bi-clipboard-plus"></i>Crea</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="col-12 col-sm-8 offset-sm-2 col-xl-8 offset-xl-1 user-body">
+        <div class="container-fluid">
+          <header class="row user-header">
+            <div class="col-4">
+              <div class="d-flex align-items-center justify-content-center h-100">
+                <img src="./images/studio_ghibli.jpg" alt="Studio Ghibli logo" class="img-fluid rounded-circle">
+              </div>
+            </div>
+            <div class="col-8 user">
+              <div class="d-flex align-items-center">
+                <h1 class="h5">ghibli</h1>
+
+                <div class="dropdown">
+                  <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Segui gi&agrave;</button>
+
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Aggiungi ai preferiti</a>
+                    <a class="dropdown-item" href="#">Silenzia</a>
+                    <a class="dropdown-item" href="#">Applica restrizioni</a>
+                    <a class="dropdown-item" href="#">Smetti di seguire</a>
+                  </div>
+                </div>
+
+                <button type="button" class="btn btn-outline-secondary">
+                  Manda un messaggio
+                </button>
+
+                <button type="button" class="btn btn-outline-secondary">
+                  <i class="bi bi-person-add"></i>
+                </button>
+              </div>
+
+              <div class="counter">
+                <ul class="d-flex">
+                  <li>Post: <span id="postsNum" class="counter-number">&minus;</span></li>
+                  <li><span id="followersNum" class="counter-number">&minus;</span> follower</li>
+                  <li><span id="profilesNum" class="counter-number">&minus;</span> profili seguiti</li>
+                </ul>
+              </div>
+              <div class="description">
+                <h2 class="small fw-bold">Studio Ghibli</h2>
+                <p class="small">
+                  <span class="text-secondary">Studio cinematografico/televisivo</span><br />
+                  - Follow us for daily Studio Ghibli photos 💫 <br />
+                  - Your personal space of Ghibli magic! <br />
+                  - DM for collaborations <br />
+                  GHIBLI PREMIUM STORE 👇🏼 <br />
+
+                  <a href="#" rel=""
+                    target="_blank">ghiblimuseumstore.com/products/anime-rings?_pos=1&amp;_psq=anime+r&amp;_ss=e&amp;_v=1.0&amp;variant=40882993823837</a><br />
+                </p>
+                <p class="small">Follower:&nbsp;<strong>ghibli.space</strong></p>
+              </div>
+            </div>
+          </header>
+          <section>
+            <nav class="justify-content-center ">
+              <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-post-tab" data-bs-toggle="tab" data-bs-target="#nav-post"
+                  type="button" role="tab" aria-controls="nav-post" aria-selected="true"><i
+                    class="bi bi-grid-3x3-gap"></i> <small>POST</small></button>
+                <button class="nav-link" id="nav-reels-tab" data-bs-toggle="tab" data-bs-target="#nav-reels"
+                  type="button" role="tab" aria-controls="nav-reels" aria-selected="false"><i
+                    class="bi bi-file-earmark-play"></i> <small>REELS</small></button>
+                <button class="nav-link" id="nav-taggedPosts-tab" data-bs-toggle="tab"
+                  data-bs-target="#nav-tagged-posts" type="button" role="tab" aria-controls="nav-tagged-posts"
+                  aria-selected="false"><i class="bi bi-person-video2"></i> <small>POST IN CUI TI HANNO
+                    TAGGATO</small></button>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-post" role="tabpanel" aria-labelledby="nav-post-tab"
+                tabindex="0">
+                <div class="thumbnails">
+                  <figure class="thumbnails__item">
+                    <img class="thumbnails__img" src="./images/post01.jpg"
+                      alt="#ghibli #ghiblistudio #ghibliunboxing #unboxing #totoro #myneighbortotoro #catbus #catbusclock #clock #pendulum #pendulumclock #japan #anime #fy #fyp">
+                    <div class="thumbnails__feed">
+                      <span class="h4"><i class="bi bi-heart-fill"></i>&nbsp;300</span>
+                      <span class="h4"><i class="bi bi-chat-fill"></i>&nbsp;4</span>
+                    </div>
+                  </figure>
+
+                  <figure class="thumbnails__item">
+                    <img class="thumbnails__img" src="./images/post02.jpg"
+                      alt="Photo by Studio Ghibli on February 27, 2023. May be a cartoon.">
+                    <div class="thumbnails__feed">
+                      <span class="h4"><i class="bi bi-heart-fill"></i>&nbsp;8.974</span>
+                      <span class="h4"><i class="bi bi-chat-fill"></i>&nbsp;10</span>
+                    </div>
+                  </figure>
+
+                  <figure class="thumbnails__item">
+                    <img class="thumbnails__img" src="./images/post03.jpg"
+                      alt="Photo by Studio Ghibli on February 27, 2023. May be a cartoon.">
+                    <div class="thumbnails__feed">
+                      <span class="h4"><i class="bi bi-heart-fill"></i>&nbsp;34,900</span>
+                      <span class="h4"><i class="bi bi-chat-fill"></i>&nbsp;86</span>
+                    </div>
+                  </figure>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="nav-reels" role="tabpanel" aria-labelledby="nav-reels-tab" tabindex="0">
+                reels section</div>
+              <div class="tab-pane fade" id="nav-tagged-posts" role="tabpanel" aria-labelledby="nav-taggedPosts-tab"
+                tabindex="0">post section</div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+    crossorigin="anonymous"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

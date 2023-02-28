@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>CSS3 - Mediaqueries</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <link href="./css/colosseo.css" rel="stylesheet" media="all" />
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <header>
+    <h1>
+      <abbr title="Colosseo">Colosseo</abbr>
+    </h1>
+    <nav>
+      <button onclick="switchMode()">Dark Mode</button>
+    </nav>
+  </header>
+
+  <main>
+    <aside>
+      <p>
+        Il <b>Colosseo</b>, originariamente conosciuto come
+        <i>Amphitheatrum Flavium</i> (in
+        <a href="/wiki/Lingua_italiana" title="Lingua italiana">italiano</a>:
+        <b>Anfiteatro Flavio</b>) o semplicemente come <i>Amphitheatrum</i>,
+        situato nel centro della citt&agrave; di Roma, &egrave; il pi&ugrave; grande
+        anfiteatro del mondo.
+      </p>
+      <p>
+        In grado di contenere un numero di spettatori stimato tra 50 000 e 87
+        000 unit&agrave;, &egrave; il pi&ugrave; importante anfiteatro romano,
+        nonch&egrave; il pi&ugrave; imponente monumento dell'antica Roma
+        che sia giunto fino a noi.
+      </p>
+      <p>
+        Inserito nel 1980 nella lista dei Patrimoni dell'umanit&agrave;
+        dall'<a
+          href="https://it.wikipedia.org/wiki/Organizzazione_delle_Nazioni_Unite_per_l%27educazione,_la_scienza_e_la_cultura"
+          title="Organizzazione delle Nazioni Unite per l'Educazione, la Scienza e la Cultura">UNESCO</a>, assieme a
+        tutto
+        il Centro storico di Roma, le Zone extraterritoriali della Santa Sede in Italia
+        e la Basilica di San Paolo fuori le mura, nel 2007 il complesso, unico
+        monumento europeo, &egrave; stato anche inserito fra le
+        <i><a href="https://it.wikipedia.org/wiki/Nuove_sette_meraviglie_del_mondo"
+            title="Nuove sette meraviglie del mondo">Nuove sette
+            meraviglie del mondo</a></i>, a seguito di un concorso organizzato da
+        <i>New Open World Corporation</i> (NOWC).
+      </p>
+      <p>L'anfiteatro &egrave; stato edificato in epoca Flavia
+        su
+        un'area al limite orientale del Foro Romano. La sua
+        costruzione fu iniziata da Vespasiano nel 70 d.C. e inaugurato da Tito nell'80, con ulteriori modifiche
+        apportate
+        durante l'impero di Domiziano nel 90.
+      </p>
+      <p>L'edificio forma un'ellisse di 527 m di perimetro, con assi che misurano
+        187,5 e 156,5 m. L'arena all'interno misura 86 × 54 m, con una superficie di 3 357 m<sup>2</sup>. L'altezza attuale
+        raggiunge
+        48,5 m, ma originariamente arrivava a 52 m. La struttura esprime con chiarezza le concezioni architettoniche e
+        costruttive romane della prima Et&agrave;
+        imperiale, basate rispettivamente sulla linea curva e avvolgente offerta dalla pianta ellittica e sulla
+        complessit&agrave; dei sistemi costruttivi. Archi e volte sono concatenati tra loro in un serrato rapporto
+        strutturale.
+      </p>
+      <p>Il nome &ldquo;Colosseo&rdquo; si diffuse solo nel Medioevo, e deriva dalla
+        deformazione popolare dell'aggettivo latino &ldquo;colosseum&rdquo; (traducibile in "colossale", come appariva
+        nell'Alto Medioevo tra le casette a uno o due piani) o, pi&ugrave; probabilmente, dalla
+        vicinanza
+        della colossale statua acrolitica di Nerone che sorgeva nei pressi.
+        Presto l'edificio divenne simbolo della citt&agrave; imperiale, espressione di un'ideologia in cui la
+        volont&agrave; celebrativa
+        giunge a definire modelli per lo svago e il divertimento del popolo.
+      </p>
+      <p>Anticamente era usato per gli spettacoli di gladiatori e altre
+        manifestazioni pubbliche (spettacoli di caccia, battaglie navali, rievocazioni di battaglie famose, e drammi
+        basati sulla mitologia classica). La tradizione che lo vuole luogo
+        di martirio di cristiani è infondata. Non più in uso dopo il VI
+        secolo, l'enorme struttura venne variamente riutilizzata nei secoli, anche come cava di materiale. Oggi è un
+        simbolo della città di Roma e una delle sue maggiori attrazioni turistiche sotto forma di monumento archeologico
+        regolarmente visitabile.
+      </p>
+    </aside>
+    <section class="posts">
+      <article class="post">
+        <figure>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1200px-Colosseo_2020.jpg"
+            alt="Colosseo" />
+          <figcaption>Immagine del Colosseo, &copy; Wikipedia</figcaption>
+        </figure>
+      </article>
+    </section>
+  </main>
+  <footer role="contentinfo">
+    <address>
+      <p>Per informazioni contatta il nostro amministratore
+        <a href="mailto:neo@matrix.com">Thomas A. Anderson</a>.
+      </p>
+    </address>
+    <small>Copyright &copy;
+      <time>2021</time>
+    </small>
+  </footer>
+  <script>
+    function switchMode() {
+      let element = document.body;
+      let className = 'dark';
+
+      if (!element.classList.contains('dark')) {
+        element.classList.add(className);
+      } else {
+        element.classList.remove(className);
+      }
+    }
+  </script>
+</body>
+
+</html>

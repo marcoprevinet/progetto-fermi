@@ -1,0 +1,30 @@
+{
+    "user": {
+        "posts": 866,
+        "followers": 286.000,
+        "profiles": 2.050
+    },
+    "posts": [
+        {
+            "id": 1,
+            "path": "./images/post01.jpg",
+            "alt": "#ghibli #ghiblistudio #ghibliunboxing #unboxing #totoro #myneighbortotoro #catbus #catbusclock #clock #pendulum #pendulumclock #japan #anime #fy #fyp",
+            "likes": 300,
+            "comments": 4
+        },
+        {
+            "id": 2,
+            "path": "./images/post01.jpg",
+            "alt": "Photo by Studio Ghibli on February 27, 2023. May be a cartoon.",
+            "likes": 8.974,
+            "comments": 10
+        },
+        {
+            "id": 3,
+            "path": "./images/post03.jpg",
+            "alt": "Photo by Studio Ghibli on February 27, 2023. May be a cartoon.",
+            "likes": 34.900,
+            "comments": 86
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>List</title>
+  <link href="./css/style.css" rel="stylesheet" media="all" />
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="./index.html" class="active">Form</a></li>
+        <li><a href="./list.html">List</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <main id="form">
+      <h2 class="title">Crea un nuovo account</h2>
+      <form method="post" action="#">
+        <div class="row">
+          <label for="tipo">Tipo persona</label>
+          <select name="tipo" id="tipo">
+            <option value="fisica">Persona fisica</option>
+            <option value="giuridica">Persona giuridica</option>
+          </select>
+        </div>
+        <div class="row">
+          <label for="name">Nome</label>
+          <input type="text" id="name" name="nome" placeholder="es: Mario" />
+        </div>
+        <div class="row">
+          <label for="surname">Cognome</label>
+          <input type="text" id="surname" name="cognome" placeholder="es: Rossi" />
+        </div>
+        <div class="row">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" placeholder="mario.rossi@email.it" />
+        </div>
+        <div class="row">
+          <label for="cf">Codice fiscale</label>
+          <input type="text" id="cf" name="codice fiscale" placeholder="RSSMRA00A01H501C" />
+        </div>
+        <div class="row">
+          <label for="birthdate">Data di nascita</label>
+          <input type="date" id="birthdate" name="data di nascita" />
+        </div>
+        <div class="row">
+          <label for="doc">Carica documento</label>
+          <input type="file" id="doc" name="documento" />
+        </div>
+        <div class="row text-center">
+          <input type="submit" value="Invia" />
+          <input type="reset" value="Reset" />
+        </div>
+      </form>
+    </main>
+    <aside class="text-right">
+      <h2 class="title">Riepilogo dati</h2>
+      <p id="riepilogo"></p>
+    </aside>
+  </div>
+  <script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+      //prevent the normal submission of the form
+      e.preventDefault();
+
+      var data = new FormData(this);
+      var response = document.getElementById("riepilogo");
+
+      // logs "title", "Go to the beach", etc.
+      for (let [key, value] of data) {
+        let span = document.createElement('span');
+        let br = document.createElement('br');
+        let text = value.length > 0 ? value : ' &minus; ';
+        span.innerHTML = key + ': ' + text;
+        response.appendChild(span);
+        response.appendChild(br);
+      }
+    });    
+  </script>
+</body>
+
+</html>

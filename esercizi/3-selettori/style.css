@@ -1,0 +1,86 @@
+@import '../assets/reset.css';
+@import '../assets/normalize.css';
+@import '../assets/typography.css';
+
+.warning {
+  font-size: 1.4rem;
+  text-decoration: underline;
+  color: darkmagenta;
+}
+
+p.warning {
+  color: darkblue;
+}
+
+#warning {
+  color: lightcoral;
+}
+
+h2 {
+  color: red;
+}
+
+.H2 {
+  text-decoration: underline;
+}
+
+a[href^="http://"] {
+  color: green;
+}
+
+a[href$=".it"] {
+  color: cyan;
+}
+
+a[href*="bing"] {
+  color: violet;
+}
+
+a:hover {
+  color: blue;
+  background-color: lightblue;
+}
+
+#main-container {
+  margin: 20px;
+}
+
+.selector {
+  border-bottom: 1px solid gray;
+}
+
+#compound-container {
+  background-color: lightcoral;
+  display: flex;
+  justify-content: space-around;
+}
+
+#compound-container > div {
+  padding: 20px;
+  flex: 1;
+}
+
+#compound-container .code {
+  background-color: cyan;
+}
+
+#compound-container > div:nth-child(3) {
+  background-color: yellow;
+}
+
+.custom-table {
+  table-layout: fixed;
+  border: 1px solid lightgrey;
+}
+
+.custom-table td {
+  padding: 16px;
+}
+
+.custom-table tr:nth-child(even) {
+  background-color: lightblue;
+}
+
+.custom-table tr:nth-child(odd) {
+  background-color: lightcoral;
+}

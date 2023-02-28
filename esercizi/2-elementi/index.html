@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--<html dir="rtl" lang="ar">-->
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Elementi</title>
+</head>
+
+<body>
+  <header id="header">
+    <nav id="nav">
+      <a href="#headers">Headers</a>
+      <a href="#paragraphs">Paragrafo</a>
+      <a href="#blockquotes">Citazione</a>
+      <a href="#lists">Lista</a>
+      <a href="#tables">Tabella</a>
+      <a href="#forms">Forms</a>
+    </nav>
+
+  </header>
+
+  <section id="headers">
+    <h1>Heading Level 1</h1>
+    <h2>Heading Level 2</h2>
+    <h3>Heading Level 3</h3>
+    <h4>Heading Level 4</h4>
+    <h5>Heading Level 5</h5>
+    <h6>Heading Level 6</h6>
+    <a href="#header" title="vai all'inizio">Go to top</a>
+  </section>
+
+  <hr />
+
+  <section id="paragraphs">
+    <h2>Paragrafo</h2>
+    <p>L'elemento <strong>HTML <code>&lt;p&gt;</code> </strong>rappresenta un
+      paragrafo di un testo. I paragrafi sono di solito rappresentati in modalit&agrave; visiva come blocchi di testo
+      che
+      sono separati da blocchi adiacenti da linee di spazio verticali e/o dalla prima linea di indentazione.<br />
+      I paragrafi sono elementi block-level.</p>
+    <a href="#header">Go to top</a>
+  </section>
+
+  <hr />
+
+  <section id="blockquotes">
+    <h2>Citazione</h2>
+    <p>L'elemento HTML <code><strong>&lt;blockquote&gt;</strong></code> indica che il testo contenuto &egrave; una
+      citazione. Solitamente &egrave; visualizzato con un'indentazione maggiore del resto del testo.
+    </p>
+    <blockquote cite="http://developer.mozilla.org">
+      <p>Questa &egrave; una citazione presa da MDN.</p>
+    </blockquote>
+    <a href="#header" title="vai all'inizio">Go to top</a>
+  </section>
+
+  <hr />
+
+  <section id="lists">
+    <h2>Liste</h2>
+
+    <h3>Non ordinata</h3>
+    <ul>
+      <li>Dolor pulvinar etiam magna etiam.</li>
+      <li>Sagittis adipiscing lorem eleifend.</li>
+      <li>Felis enim feugiat dolore viverra.</li>
+    </ul>
+
+    <h3>Ordinata</h3>
+    <ol>
+      <li>Dolor pulvinar etiam magna etiam.</li>
+      <li>Etiam vel felis at lorem sed viverra.</li>
+      <li>Felis enim feugiat dolore viverra.</li>
+      <li>Dolor pulvinar etiam magna etiam.</li>
+      <li>Etiam vel felis at lorem sed viverra.</li>
+      <li>Felis enim feugiat dolore viverra.</li>
+    </ol>
+    <a href="#header" title="vai all'inizio">Go to top</a>
+  </section>
+
+  <hr />
+
+  <section id="tables">
+    <h2>Tabella</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Item 1</td>
+          <td>Ante turpis integer aliquet porttitor.</td>
+          <td>29.99</td>
+        </tr>
+        <tr>
+          <td>Item 2</td>
+          <td>Vis ac commodo adipiscing arcu aliquet.</td>
+          <td>19.99</td>
+        </tr>
+        <tr>
+          <td>Item 3</td>
+          <td> Morbi faucibus arcu accumsan lorem.</td>
+          <td>29.99</td>
+        </tr>
+        <tr>
+          <td>Item 4</td>
+          <td>Vitae integer tempus condimentum.</td>
+          <td>19.99</td>
+        </tr>
+        <tr>
+          <td>Item 5</td>
+          <td>Ante turpis integer aliquet porttitor.</td>
+          <td>29.99</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Totals</td>
+          <td>100.00</td>
+        </tr>
+      </tfoot>
+    </table>
+    
+    <a href="#header" title="vai all'inizio">Go to top</a>
+  </section>
+
+  <hr />
+
+  <!-- Form -->
+  <section id="forms">
+    <h2>Form</h2>
+    <form method="post" action="#">
+      <p>
+        <label for="firstname">Nome</label>
+        <input type="text" id="firstname" name="firstname" placeholder="First Name" />
+      </p>
+      <p>
+        <label for="lastname">Cognome</label>
+        <input type="text" id="lastname" name="lastname" placeholder="Last Name" />
+      </p>
+      <p>
+        <label for="age">Et&agrave;</label>
+        <input type="number" id="age" name="age" placeholder="Age" />
+      </p>
+      <p>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" />
+      </p>
+      <p>
+        <label for="prov">Provincia</label>
+        <select id="prov" name="prov">
+          <option value="BL">Belluno</option>
+          <option value="PD">Padova</option>
+          <option value="RO">Rovigo</option>
+          <option value="TV">Treviso</option>
+          <option value="VE">Venezia</option>
+          <option value="VR">Verona</option>
+          <option value="VI">Vicenza</option>
+        </select>
+      </p>
+      <p>
+        <label for="bike">Ho una bici</label>
+        <input type="checkbox" id="bike" name="bike" value="bicycle">
+      </p>
+      <p>
+        <label for="skate">Ho uno skate</label>
+        <input type="checkbox" id="skate" name="skate" value="skateboard">
+      </p>
+
+      <p>
+        <label for="car">Ho un'auto</label>
+        <input type="checkbox" id="car" name="car" value="car">
+      </p>
+      <p>Seleziona:</p>
+
+      <p>
+        <input type="radio" id="boy" name="sex" value="boy" checked>
+        <label for="boy">Ragazzo</label>
+      </p>
+
+      <p>
+        <input type="radio" id="girl" name="sex" value="girl">
+        <label for="girl">Ragazza</label>
+      </p>
+
+      <p>
+        <textarea name="demo-message" id="demo-message" placeholder="Inserisci un messaggio" rows="6"></textarea>
+      </p>
+
+      <p>
+        <input type="file" id="doc" name="doc" />
+      </p>
+
+      <p>
+        <input type="submit" value="Invia" />
+        <input type="reset" value="Reset" />
+      </p>
+    </form>
+    <a href="#header" title="vai all'inizio">Go to top</a>
+  </section>
+</body>
+
+</html>

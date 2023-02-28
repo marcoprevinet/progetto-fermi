@@ -1,0 +1,10 @@
+.nav-link i {
+    margin-right: .7rem;
+}
+
+.img-post {
+    margin: 1rem;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}

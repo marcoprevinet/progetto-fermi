@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+	--light-gray: #F6F6F6;
+	--orange: #DF9124;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--light-gray);
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+section.section-one {
+	min-height: 500px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 100px 0;
+	object-fit: cover;
+	display: block;
+	overflow: visible;
+	background-image: url("./../images/section-one.jpeg");
+}
+
+.welcome {
+	font-size: 5rem;
+	font-weight: 700;
+}
+
+footer {
+	color: var(--light-gray);
+	background-color: var(--orange);
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--<html dir="rtl" lang="ar">-->
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Selettori</title>
+  <link href="style.css" rel="stylesheet" media="all" />
+</head>
+
+<body>
+  <header role="banner">
+    <h1>
+      <abbr title="We are talking about CSS Selectors">Selettori</abbr>
+    </h1>
+  </header>
+  <main id="main-container" role="main">
+    <section class="selectors">
+      <h2 class="h2">Selettore semplice</h2>
+      <h2 class="H2">CSS &egrave; <i>case-sensitive</i></h2>
+      <article class="selector">
+        <h3>Selettori di tipo (type selector)</h3>
+        <p>
+          <code>h1 {color: red;}</code>
+        </p>
+      </article>
+      <article class="selector">
+        <h3>Selettori di tipo (attribute selector)</h3>
+        <p>
+          <code>a[href^="http://"] {color: green;}</code>
+          <br />
+          <code>a[href$=".it"] {color: cyan;}</code>
+          <br />
+          <code>a[href*="bing"] {color: violet;}</code>
+        </p>
+        <ol>
+          <li>
+            <a target="_blank" href="https://www.google.it">https://www.google.it</a>
+          </li>
+          <li>
+            <a target="_blank" href="https://www.bing.com">https://www.bing.com</a>
+          </li>
+          <li>
+            <a target="_blank" href="http://it.yahoo.com/">http://it.yahoo.com/</a>
+          </li>
+        </ol>
+      </article>
+      <article class="selector">
+        <h3>Selettori di classe (class selector)</h3>
+        <p>
+          <code>
+            .selector {border-bottom: 1px solid gray;}
+          </code>
+        </p>
+        <p>
+          Tutti gli elementi con classe
+          <i>.selector</i> hanno un bordo inferiore definito.
+        </p>
+      </article>
+      <article class="selector">
+        <h3>Selettori di ID (ID attribute)</h3>
+        <p>
+          <code>
+              #main-container {margin: 20px;}
+          </code>
+        </p>
+        <p>
+          Il selettore di ID identifica in modo univoco un elemento della pagina.
+          <br />&Egrave; semanticamente errato avere pi&ugrave; elementi con lo stesso ID nella stessa pagina.
+        </p>
+      </article>
+      <article class="selector">
+        <h3>Pseudoclassi (pseudo&ndash;class selector)</h3>
+        <p>
+          <code>a:hover {color: blue; background-color: lightblue;}</code>
+        </p>
+        <p>
+          Le pseudoclassi definiscono uno stato dell'elemento.
+        </p>
+      </article>
+    </section>
+    <section class="selectors">
+      <h2 class="h2">Compound selector</h2>
+      <article id="compound-container" class="selector">
+        <div class="code">
+          <p>
+            <code>
+                #compound-container {background-color: lightcoral;}
+                #compound-container > div {padding: 20px; width: 50%;}
+                #compound-container .about {background-color: cyan;}
+            </code>
+          </p>
+        </div>
+        <div class="description">
+          <p>Un selettore composto (Compound selector) &egrave; una sequenza di selettori semplici</p>
+        </div>
+        <div>
+          <h3>Socials</h3>
+          <ul>
+            <li>
+              <a target="_blank" href="#">Facebook</a>
+            </li>
+            <li>
+              <a target="_blank" href="#">Instagram</a>
+            </li>
+            <li>
+              <a target="_blank" href="#">Twitter</a>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </section>
+    <section class="selectors">
+      <h2 class="h2">Complex selector</h2>
+      <article class="selector">
+        <div class="description">
+          <p>Un selettore complesso (complex-selector) &egrave; una sequenza di uno o più selettori composti separati da
+            combinatori.</p>
+        </div>
+        <div class="code">
+          <p>
+            <code>.custom-table tr:nth-child(even) {background-color: lightblue}</code>
+            <br />
+            <code>.custom-table tr:nth-child(odd) {background-color: lightcoral;}</code>
+          </p>
+        </div>
+        <div>
+          <table class="custom-table">
+            <tbody>
+              <tr>
+                <td>First Line &ndash; First column</td>
+                <td>First Line &ndash; Second column</td>
+              </tr>
+              <tr>
+                <td>Second Line &ndash; First column</td>
+                <td>Second Line &ndash; Second column</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+    <section class="selectors">
+      <h2 class="h2">Priorit&agrave; dei selettori</h2>
+      <div class="code">
+        <code>p {font-size: 1.2rem;}</code>
+        <br />
+        <code>.warning {font-size: 1.4rem; text-decoration: underline; color: darkmagenta;}</code>
+        <br />
+        <code>p.warning {color: darkblue;}</code>
+        <br />
+        <code>#warning {color: lightcoral;}</code>
+      </div>
+      <article class="selector">
+        <p>Questo &egrave; un paragrafo semplice</p>
+        <span class="warning">Questo &egrave; uno <code>span</code> con classe <code>.warning</code></span>
+        <p class="warning">Questo &egrave; un paragrafo con classe <code>.warning</code></p>
+        <p id="warning">Questo &egrave; un paragrafo con ID <code>#warning</code></p>
+      </article>
+    </section>
+  </main>
+</body>
+
+</html>
