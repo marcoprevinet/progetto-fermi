@@ -1,16 +1,158 @@
 [
-  {
-    "id": "1",
-	"idAnagrafica": "1",
-	"prodotto": "COPERTURA BARCA",
-	"dataSottoscrizione": "2023-02-01",
-	"dataScadenza": "2024-01-31",
-	"premio": "500.00",
-	"compagnia": "ASSICURATI S.p.A."
-	"garanzie": [
-	  "INCENDIO",
-	  "FURTO",
-	  "CARROZZERIA"
-	]
-  }
+	{
+		"idPolizza": "1",
+		"idAnagrafica": "1",
+		"prodotto": "COPERTURA BARCA",
+		"dataSottoscrizione": "2023-02-01",
+		"dataScadenza": "2024-01-31",
+		"premioAnnuale": 500.00,
+		"compagnia": "ASSICURATI S.p.A.",
+		"garanzie": [
+			"INCENDIO",
+			"FURTO",
+			"CARROZZERIA"
+		],
+		"operazioni": [
+			{
+				"idOperazione": "1",
+				"tipoOperazione": "VERSAMENTO PREMIO",
+				"importo": 500.00,
+				"dataOperazione": "2023-01-30",
+				"statoOperazione": "COMPLETATA"
+			}
+		]
+	},
+	{
+		"idPolizza": "2",
+		"idAnagrafica": "1",
+		"prodotto": "PIANO INTEGRATIVO",
+		"dataSottoscrizione": "2019-05-15",
+		"premioAnnuale": 1200.00,
+		"compagnia": "ASSICURATI S.p.A.",
+		"operazioni": [
+			{
+				"idOperazione": "2",
+				"tipoOperazione": "SOTTOSCRIZIONE",
+				"importo": 400.00,
+				"dataOperazione": "2019-05-15",
+				"statoOperazione": "COMPLETATA"
+			},
+			{
+				"idOperazione": "3",
+				"tipoOperazione": "VERSAMENTO PREMIO",
+				"importo": 600.00,
+				"dataOperazione": "2019-11-15",
+				"statoOperazione": "COMPLETATA"
+			},
+			{
+				"idOperazione": "4",
+				"tipoOperazione": "VERSAMENTO PREMIO",
+				"importo": 600.00,
+				"dataOperazione": "2020-05-15",
+				"statoOperazione": "COMPLETATA"
+			},
+			{
+				"idOperazione": "5",
+				"tipoOperazione": "VERSAMENTO PREMIO",
+				"importo": 600.00,
+				"dataOperazione": "2020-11-15",
+				"statoOperazione": "COMPLETATA"
+			},
+			{
+				"idOperazione": "6",
+				"tipoOperazione": "VERSAMENTO PREMIO",
+				"importo": 600.00,
+				"dataOperazione": "2021-05-15",
+				"statoOperazione": "COMPLETATA"
+			},
+			{
+				"idOperazione": "7",
+				"tipoOperazione": "VERSAMENTO PREMIO",
+				"importo": 600.00,
+				"dataOperazione": "2021-11-15",
+				"statoOperazione": "COMPLETATA"
+			},
+			{
+				"idOperazione": "8",
+				"tipoOperazione": "VERSAMENTO PREMIO",
+				"importo": 600.00,
+				"dataOperazione": "2022-05-15",
+				"statoOperazione": "COMPLETATA"
+			},
+			{
+				"idOperazione": "9",
+				"tipoOperazione": "VERSAMENTO PREMIO",
+				"importo": 600.00,
+				"dataOperazione": "2022-11-15",
+				"statoOperazione": "COMPLETATA"
+			}
+		]
+	},
+	{
+		"idPolizza": "3",
+		"idAnagrafica": "2",
+		"prodotto": "ASSICURAZIONE CASA",
+		"dataSottoscrizione": "2020-03-01",
+		"dataScadenza": "2024-02-29",
+		"premioAnnuale": 820.00,
+		"compagnia": "ASSICURATI S.p.A.",
+		"garanzie": [
+			"INCENDIO",
+			"FURTO",
+			"DANNI ELETTRICI"
+		],
+		"operazioni": [
+			{
+				"idOperazione": "10",
+				"tipoOperazione": "SOTTOSCRIZIONE",
+				"importo": 820.00,
+				"dataOperazione": "2020-02-28",
+				"statoOperazione": "COMPLETATA"
+			},
+			{
+				"idOperazione": "11",
+				"tipoOperazione": "VERSAMENTO PREMIO",
+				"importo": 820.00,
+				"dataOperazione": "2021-02-28",
+				"statoOperazione": "COMPLETATA"
+			},
+			{
+				"idOperazione": "12",
+				"tipoOperazione": "VERSAMENTO PREMIO",
+				"importo": 820.00,
+				"dataOperazione": "2022-02-28",
+				"statoOperazione": "COMPLETATA"
+			},
+			{
+				"idOperazione": "13",
+				"tipoOperazione": "VERSAMENTO PREMIO",
+				"importo": 820.00,
+				"dataOperazione": "2023-02-28",
+				"statoOperazione": "DA COMPLETARE"
+			}
+		]
+	},
+	{
+		"idPolizza": "4",
+		"idAnagrafica": "3",
+		"prodotto": "RC AUTO",
+		"dataSottoscrizione": "2023-02-01",
+		"dataScadenza": "2024-01-31",
+		"premioAnnuale": 500.00,
+		"compagnia": "ASSICURATI S.p.A.",
+		"garanzie": [
+			"INCENDIO",
+			"FURTO",
+			"CARROZZERIA"
+		],
+		"operazioni": [
+			{
+				"idOperazione": "1",
+				"tipoOperazione": "VERSAMENTO PREMIO",
+				"importo": 500.00,
+				"dataOperazione": "2023-01-30",
+				"statoOperazione": "COMPLETATA"
+			}
+		]
+	}
 ]

@@ -1,20 +1,59 @@
 [
-  {
-    "id": "1",
-	"cognome": "ROSSI",
-	"nome": "MARIO",
-	"codFiscale": "RSSMRA00A001A",
-	"dataNascita": "1990-01-01",
-	"luogoNascita": "VENEZIA",
-	"residenza": {
-	  "comune": "VENEZIA",
-	  "indirizzo": "RIO TERÀ S. ISEPO, 787",
-	  "provincia": "VE",
-	  "cap": "30122"
+	{
+		"idAnagrafica": "1",
+		"cognome": "ROSSI",
+		"nome": "MARIO",
+		"sesso": "M",
+		"codFiscale": "RSSMRA90A01L736W",
+		"dataNascita": "1990-01-01",
+		"luogoNascita": "VENEZIA",
+		"residenza": {
+			"comune": "VENEZIA",
+			"indirizzo": "RIO TERÀ S. ISEPO, 787",
+			"provincia": "VE",
+			"cap": "30122"
+		},
+		"contatti": {
+			"email": "mario.rossi@email.com",
+			"cellulare": "3330012345"
+		}
 	},
-	"contatti": {
-	  "email": "mario.rossi@email.com",
-	  "cellulare": "3330012345"
+	{
+		"idAnagrafica": "2",
+		"cognome": "BIANCHI",
+		"nome": "ANNA",
+		"sesso": "F",
+		"codFiscale": "BNCNNA99S48L407X",
+		"dataNascita": "1999-11-08",
+		"luogoNascita": "TREVISO",
+		"residenza": {
+			"comune": "PREGANZIOL",
+			"indirizzo": "VIA FORLANINI, 24",
+			"provincia": "TV",
+			"cap": "31022"
+		},
+		"contatti": {
+			"email": "anna.bianchi@email.com",
+			"cellulare": "3339987654"
+		}
+	},
+	{
+		"idAnagrafica": "3",
+		"cognome": "VERDI",
+		"nome": "SIMONA",
+		"sesso": "F",
+		"codFiscale": "VRDSMN80T49L424Q",
+		"dataNascita": "1980-12-09",
+		"luogoNascita": "TRIESTE",
+		"residenza": {
+			"comune": "VENEZIA",
+			"indirizzo": "VIA BISSUOLA, 100",
+			"provincia": "VE",
+			"cap": "30173"
+		},
+		"contatti": {
+			"email": "simona.verdi@email.com",
+			"cellulare": "3332244666"
+		}
 	}
-  }
 ]
