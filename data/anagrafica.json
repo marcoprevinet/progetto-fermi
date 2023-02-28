@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+	"cognome": "ROSSI",
+	"nome": "MARIO",
+	"codFiscale": "RSSMRA00A001A",
+	"dataNascita": "1990-01-01",
+	"luogoNascita": "VENEZIA",
+	"residenza": {
+	  "comune": "VENEZIA",
+	  "indirizzo": "RIO TERÀ S. ISEPO, 787",
+	  "provincia": "VE",
+	  "cap": "30122"
+	},
+	"contatti": {
+	  "email": "mario.rossi@email.com",
+	  "cellulare": "3330012345"
+	}
+  }
+]
